@@ -16,7 +16,7 @@ fn start_sqzlite(ip: String) {
     thread::spawn(move || {
         // Start squeezelite
         let hostname: std::ffi::OsString = gethostname();
-        let command: String = format!("squeezelite -s {} -M MassDesktop -n {} -m aa:aa:aa:11:11:22", ip.as_str(), hostname.to_str().expect("Couldnt convert hostname to &str -_-"));
+        let command: String = format!("squeezelite -s {} -M MassDesktop -n {} -m aa:aa:aa:11:11:22 -U Master", ip.as_str(), hostname.to_str().expect("Couldnt convert hostname to &str -_-"));
         println!("Running: '{}' to start the squeezelite client. The command has to be in your path", command);
         Exec::shell(command).join().expect("Failed to start squeeselite");
     });
