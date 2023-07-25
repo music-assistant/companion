@@ -20,7 +20,7 @@ struct Song {
 }
 
 // Function for running the Discord rich presence
-pub fn start_rpc(mass_ws: String) {
+pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
     // Create the discord rpc client
     let mut client: DiscordIpcClient =
         DiscordIpcClient::new(CLIENT_ID).expect("Coulnd't create the discord client!");
@@ -46,17 +46,28 @@ pub fn start_rpc(mass_ws: String) {
             .clone();
         // Parse to json. Sometimes fails there wrapped in match thing
         let msg_json: serde_json::Value = match serde_json::from_str(&msg_text) {
-            Ok(msg_json) => {
-                msg_json
-            }
-            Err(_) => continue
+            Ok(msg_json) => msg_json,
+            Err(_) => continue,
         };
-        
-        //let msg_json: serde_json::Value =
-        //    serde_json::from_str(&msg_text).expect("Response JSON was not valid");
 
         // If it isnt a queue update we ignore it
         if !(msg_json["event"] == "queue_updated") {
+            continue;
+        }
+
+        let displayname: String = msg_json["data"]["display_name"]
+            .to_string()
+            .replace('"', "");
+        let hostname: String = String::from(hostname.to_str().expect("Couldnt convert to &str"));
+
+        // If it isnt the right player we also ignore it
+        if hostname != displayname {
+            continue;
+        }
+
+        // Stop discord rpc if not playing
+        if msg_json["data"]["state"].to_string().replace('"', "") != "playing" {
+            client.clear_activity().expect("Couldnt clear activity");
             continue;
         }
 
@@ -70,6 +81,15 @@ pub fn start_rpc(mass_ws: String) {
             client.clear_activity().expect("Couldnt clear activity");
             continue;
         }
+
+        // Get duration things
+        let already_played: i64 = msg_json["data"]["elapsed_time"]
+            .clone()
+            .as_f64()
+            .unwrap_or(0.0)
+            .round() as i64
+            * 1000;
+        let duration: i64 = media_item["duration"].as_i64().unwrap() * 1000;
 
         // Create the current song struct
         let current_song: Song = Song {
@@ -99,7 +119,7 @@ pub fn start_rpc(mass_ws: String) {
                 .duration_since(UNIX_EPOCH)
                 .expect("whoops")
                 .as_millis() as i64
-                + (&media_item["duration"].as_i64().unwrap() * 1000),
+                + (duration - already_played),
         };
 
         // The assets of the activity
