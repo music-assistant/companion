@@ -15,7 +15,20 @@
       "all": false,
       "shell": {
         "all": false,
-        "open": true
+        "open": true,
+        "sidecar": true,
+        "scope": [
+          {
+            "name": "squeezelite",
+            "sidecar": true,
+            "args": [
+              "-s",
+              "-M",
+              "-n",
+              "-U"
+            ]
+          }
+        ]
       }
     },
     "bundle": {
@@ -27,6 +40,9 @@
         "icons/192x192.png",
         "icons/icon.ico",
         "icons/icon.svg"
+      ],
+      "externalBin": [
+        "squeezelite"
       ]
     },
     "security": {
