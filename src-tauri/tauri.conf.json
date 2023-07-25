@@ -21,16 +21,7 @@
           {
             "name": "squeezelite",
             "sidecar": true,
-            "args": [
-              "-s",
-              { "validator": "/[^!]/" },
-              "-M",
-              { "validator": "/[^!]/" },
-              "-n",
-              { "validator": "/[^!]/" },
-              "-U",
-              "Master"
-            ]
+            "args": true
           }
         ]
       }
