@@ -23,9 +23,13 @@
             "sidecar": true,
             "args": [
               "-s",
+              { "validator": "/[^!]/" },
               "-M",
+              { "validator": "/[^!]/" },
               "-n",
-              "-U"
+              { "validator": "/[^!]/" },
+              "-U",
+              "Master"
             ]
           }
         ]
@@ -42,7 +46,7 @@
         "icons/icon.svg"
       ],
       "externalBin": [
-        "squeezelite"
+        "binaries/squeezelite"
       ]
     },
     "security": {
