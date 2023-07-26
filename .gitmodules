@@ -1,6 +1,3 @@
-[submodule "src"]
-	path = src
-	url = https://github.com/music-assistant/frontend
 [submodule "frontend-source"]
 	path = frontend-source
 	url = https://github.com/music-assistant/frontend.git
