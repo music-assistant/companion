@@ -13,20 +13,19 @@ url="https://github.com/Un10ck3d/massapp"
 license=('Apache-2.0')
 depends=(webkit2gtk)
 makedepends=(cargo git rust)
-source=("git+https://github.com/Un10ck3d/massapp.git")
 md5sums=("SKIP")
+source=("git+$url.git")
 
 build() {
-  cd "$srcdir/../pkg/$pkgname"
+  cd ".."
 	sudo npm install -g yarn
   yarn
   yarn run tauri build
 }
 
 package() {
-  cd "$srcdir/../pkg/$pkgname"
-  cd "src-tauri/target/release"
+  cd "../src-tauri/target/release/"
 	install -Dm644 ./bundle/appimage/mass.AppDir/mass.desktop "$pkgdir/usr/share/applications/massdesktop.desktop"
-  install -Dm 644 ./bundle/appimage/mass.AppDir/mass.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/mass.png"
-  install -Dm0755 ./mass "$pkgdir/usr/bin/"
+  install -Dm644 ./bundle/appimage/mass.AppDir/mass.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/mass.png"
+  install -Dm0755 -t "$pkgdir/usr/bin/" ./mass
 }
