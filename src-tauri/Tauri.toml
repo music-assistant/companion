@@ -1,6 +1,6 @@
 [build]
 beforeDevCommand = "yarn dev"
-beforeBuildCommand = "cd frontend-source && yarn build && mv dist ../dist"
+beforeBuildCommand = "rm -r dist && cd frontend-source && yarn build && mv dist ../dist"
 devPath = "http://localhost:1420"
 distDir = "../dist"
 withGlobalTauri = false
