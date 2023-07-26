@@ -39,7 +39,10 @@
       ],
       "externalBin": [
         "binaries/squeezelite"
-      ]
+      ],
+      "appimage": {
+        "bundleMediaFramework": true
+      }
     },
     "security": {
       "csp": null
