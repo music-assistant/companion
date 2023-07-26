@@ -1,0 +1,50 @@
+[build]
+beforeDevCommand = "yarn dev"
+beforeBuildCommand = "cd frontend-source && yarn build && mv dist ../dist"
+devPath = "http://localhost:1420"
+distDir = "../dist"
+withGlobalTauri = false
+
+[package]
+productName = "mass"
+version = "0.0.0"
+
+[tauri.allowlist]
+all = false
+
+[tauri.allowlist.dialog]
+all = true
+
+[tauri.allowlist.shell]
+all = false
+open = true
+sidecar = true
+
+[[tauri.allowlist.shell.scope]]
+name = "squeezelite"
+sidecar = true
+args = true
+
+[tauri.bundle]
+active = true
+#targets = "all"
+identifier = "com.mass.app"
+icon = [
+  "icons/icon.png",
+  "icons/192x192.png",
+  "icons/icon.ico",
+  "icons/icon.svg"
+]
+externalBin = [ "binaries/squeezelite" ]
+
+#[tauri.bundle.appimage]
+#bundleMediaFramework = true
+
+[tauri.security]
+
+[[tauri.windows]]
+fullscreen = false
+resizable = true
+title = "Mass"
+width = 800
+height = 600
