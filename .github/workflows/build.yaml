@@ -41,13 +41,28 @@ jobs:
           cache: 'yarn' # Set this to npm, yarn or pnpm.
 
       - name: Install frontend dependencies
+        if: matrix.platform != 'windows-latest'
         # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
         run: yarn install && cd $GITHUB_WORKSPACE/frontend-source/ && yarn install && cd $GITHUB_WORKSPACE # Change this to npm, yarn or pnpm.
 
+      - name: Install frontend dependencies (Windows)
+        if: matrix.platform == 'windows-latest'
+        # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
+        run: yarn install && cd $env:GITHUB_WORKSPACE/frontend-source/ && yarn install && cd $env:GITHUB_WORKSPACE # Change this to npm, yarn or pnpm.
+
       - name: Build the app
+        if: matrix.platform != 'windows-latest'
         uses: tauri-apps/tauri-action@v0
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           distPath: "$GITHUB_WORKSPACE/frontend-source/dist"
 
+      - name: Build the app (Windows)
+        if: matrix.platform == 'windows-latest'
+        uses: tauri-apps/tauri-action@v0
+  
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          distPath: "$env:GITHUB_WORKSPACE/frontend-source/dist"
+  
