@@ -41,6 +41,9 @@ externalBin = [ "binaries/squeezelite" ]
 [tauri.bundle.appimage]
 bundleMediaFramework = true
 
+[tauri.bundle.macOS]
+entitlements = "../Entitlements.plist"
+
 [tauri.security]
 
 [[tauri.windows]]
