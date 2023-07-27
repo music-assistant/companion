@@ -49,5 +49,5 @@ jobs:
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          distDir: "$GITHUB_WORKSPACE/frontend-source/dist"
+          distPath: "$GITHUB_WORKSPACE/frontend-source/dist"
 
