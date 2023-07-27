@@ -50,8 +50,8 @@ jobs:
         # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
         run: yarn install && cd $env:GITHUB_WORKSPACE/frontend-source/ && yarn install && cd $env:GITHUB_WORKSPACE # Change this to npm, yarn or pnpm.
 
-      - name: Build the app
-        if: matrix.platform != 'windows-latest'
+      - name: Build the app (Linux)
+        if: matrix.platform == 'ubuntu-20.04'
         uses: tauri-apps/tauri-action@v0
 
         env:
@@ -69,7 +69,7 @@ jobs:
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
 
       - name: Build the app (Mac)
-        if: matrix.platform == 'windows-latest'
+        if: matrix.platform == 'macos-latest'
         uses: tauri-apps/tauri-action@v0
   
         env:
