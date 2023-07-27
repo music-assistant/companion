@@ -24,8 +24,9 @@ build() {
 }
 
 package() {
-  cd "../src-tauri/target/release/"
-	install -Dm644 ./bundle/appimage/mass.AppDir/mass.desktop "$pkgdir/usr/share/applications/massdesktop.desktop"
-  install -Dm644 ./bundle/appimage/mass.AppDir/mass.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/mass.png"
-  install -Dm0755 -t "$pkgdir/usr/bin/" ./mass
+  cd ".."
+	install -Dm644 ./massdesktop.desktop "$pkgdir/usr/share/applications/massdesktop.desktop"
+  install -Dm644 ./app-icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/mass.png"
+  install -Dm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/mass
+  install -Dm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/squeezelite
 }

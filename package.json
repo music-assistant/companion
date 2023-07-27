@@ -1,0 +1,14 @@
+{
+    "name": "mass",
+    "version": "0.0.0",
+    "type": "module",
+    "description": "The Music Assistant frontend developed in Vue.",
+    "license": "Apache-2.0",
+    "scripts": {
+      "tauri": "tauri"
+    },
+    "devDependencies": {
+      "@tauri-apps/cli": "^1.4.0"
+    }
+  }
+  

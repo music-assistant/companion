@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Music
+Comment=Mass desktop app
+Exec=mass
+Icon=mass
+Name=Mass Desktop
+Terminal=false
+Type=Application

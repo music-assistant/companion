@@ -45,7 +45,7 @@ bundleMediaFramework = true
 [[tauri.windows]]
 fullscreen = false
 resizable = true
-title = "Mass"
+title = "Mass Desktop"
 width = 800
 height = 600
 
