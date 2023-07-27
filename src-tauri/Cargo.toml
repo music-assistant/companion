@@ -13,7 +13,7 @@ edition = "2021"
 tauri-build = { version = "1.4", features = [] }
 
 [dependencies]
-tauri = { version = "1.4", features = [ "dialog-all", "shell-sidecar", "shell-open", "process-command-api", "devtools", "config-toml"] }
+tauri = { version = "1.4", features = [ "updater", "dialog-all", "shell-sidecar", "shell-open", "process-command-api", "devtools", "config-toml"] }
 discord-rich-presence = "0.2.3"
 tungstenite = {version = "0.19.0", features = ["native-tls"] }
 url = "2.4.0"

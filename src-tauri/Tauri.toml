@@ -1,8 +1,8 @@
 [build]
-beforeDevCommand = "yarn dev"
-beforeBuildCommand = "rm -r dist && cd frontend-source && yarn build && mv dist ../dist"
+beforeDevCommand = "cd frontend-source && yarn dev"
+beforeBuildCommand = "cd frontend-source/ && yarn build"
 devPath = "http://localhost:1420"
-distDir = "../dist"
+distDir = "../frontend-source/dist"
 withGlobalTauri = false
 
 [package]
@@ -27,7 +27,7 @@ args = true
 
 [tauri.bundle]
 active = false
-#targets = "all"
+targets = "all"
 identifier = "com.mass.app"
 icon = [
   "icons/icon.png",
@@ -37,8 +37,8 @@ icon = [
 ]
 externalBin = [ "binaries/squeezelite" ]
 
-#[tauri.bundle.appimage]
-#bundleMediaFramework = true
+[tauri.bundle.appimage]
+bundleMediaFramework = true
 
 [tauri.security]
 
@@ -48,3 +48,11 @@ resizable = true
 title = "Mass"
 width = 800
 height = 600
+
+[tauri.updater]
+active = true
+dialog = false
+pubkey = "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IERDRTNDNDM0NEE5NzQyQjcKUldTM1FwZEtOTVRqM0JCWFhNU3oyZDIyTmpFbStPQjF1bXBqaWNrQkZFN1V3c25SMVArOVN1WFoK"
+
+[tauri.updater.windows]
+installMode = "passive"
