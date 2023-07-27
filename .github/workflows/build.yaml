@@ -42,10 +42,12 @@ jobs:
 
       - name: Install frontend dependencies
         # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
-        run: yarn install && cd frontend-source/ && yarn install && cd .. # Change this to npm, yarn or pnpm.
+        run: yarn install && cd $GITHUB_WORKSPACE/frontend-source/ && yarn install && cd $GITHUB_WORKSPACE # Change this to npm, yarn or pnpm.
 
       - name: Build the app
         uses: tauri-apps/tauri-action@v0
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          distDir: "$GITHUB_WORKSPACE/frontend-source/dist"
+
