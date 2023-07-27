@@ -7,7 +7,7 @@ withGlobalTauri = false
 
 [package]
 productName = "mass"
-version = "0.0.0"
+version = "0.0.1"
 
 [tauri.allowlist]
 all = false
@@ -26,7 +26,7 @@ sidecar = true
 args = true
 
 [tauri.bundle]
-active = false
+active = true
 targets = "all"
 identifier = "com.mass.app"
 icon = [
