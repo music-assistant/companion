@@ -5,7 +5,8 @@
     "description": "The Music Assistant frontend developed in Vue.",
     "license": "Apache-2.0",
     "scripts": {
-      "tauri": "tauri"
+      "tauri": "tauri",
+      "build": "cd frontend-source/ && yarn build"
     },
     "devDependencies": {
       "@tauri-apps/cli": "^1.4.0"
