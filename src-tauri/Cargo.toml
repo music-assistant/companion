@@ -1,6 +1,6 @@
 [package]
 name = "music_assistant_desktop"
-version = "0.0.8"
+version = "0.0.1"
 description = "Music Assistant Desktop App"
 authors = ["you"]
 license = "Apache-2.0"
