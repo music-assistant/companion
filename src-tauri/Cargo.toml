@@ -1,6 +1,6 @@
 [package]
 name = "mass"
-version = "0.0.6"
+version = "0.0.7"
 description = "Mass Desktop App"
 authors = ["you"]
 license = "Apache-2.0"
