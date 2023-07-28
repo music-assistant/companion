@@ -30,8 +30,6 @@ fn start_sqzlite(ip: String) {
                 hostname
                     .to_str()
                     .expect("Couldnt convert hostname to &str -_-"),
-                "-U",
-                "Master",
             ])
             .spawn()
             .expect("Failed to start squeeselite");
