@@ -1,1 +1,0 @@
-frontend-source/.eslintrc.cjs
