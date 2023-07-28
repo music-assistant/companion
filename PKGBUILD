@@ -5,6 +5,7 @@
 
 # Maintainer: Jonathan Bangert <jonathan@bangert.dk>
 pkgname='MassDesktop'
+_pkgname='massapp'
 pkgver=0.0.6
 pkgrel=1
 pkgdesc="The mass desktop app"
@@ -18,7 +19,7 @@ md5sums=("SKIP")
 source=("git+$url.git")
 
 build() {
-  cd ".."
+  cd "$srcdir/$_pkgname"
   git submodule update --init --recursive
 	sudo npm install -g yarn
   yarn
@@ -26,7 +27,7 @@ build() {
 }
 
 package() {
-  cd ".."
+  cd "$srcdir/$_pkgname"
 	install -DCm644 ./massdesktop.desktop "$pkgdir/usr/share/applications/massdesktop.desktop"
   install -DCm644 ./app-icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/mass.png"
   install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/mass
