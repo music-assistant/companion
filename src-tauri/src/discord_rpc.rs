@@ -136,7 +136,7 @@ pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
 
         // The buttons of the activity
         let buttons: Vec<activity::Button<'_>> = vec![
-            activity::Button::new("What's Mass??", "https://github.com/music-assistant/server"),
+            activity::Button::new("What's this??", "https://github.com/music-assistant/server"),
             activity::Button::new("Preview song!", &current_song.preview_url),
         ];
 

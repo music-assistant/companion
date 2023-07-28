@@ -1,5 +1,5 @@
 {
-    "name": "mass",
+    "name": "music_assistant",
     "version": "0.0.8",
     "type": "module",
     "description": "The Music Assistant frontend developed in Vue.",

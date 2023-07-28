@@ -2,6 +2,7 @@
   "recommendations": [
     "Vue.volar",
     "tauri-apps.tauri-vscode",
+    "Vue.vscode-typescript-vue-plugin",
     "rust-lang.rust-analyzer"
   ]
 }

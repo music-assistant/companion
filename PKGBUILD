@@ -4,11 +4,11 @@
 # then please put 'unknown'.
 
 # Maintainer: Jonathan Bangert <jonathan@bangert.dk>
-pkgname='MassDesktop'
-_pkgname='massapp'
+pkgname='Music Assistant'
+_pkgname='music_assistant'
 pkgver=0.0.8
 pkgrel=1
-pkgdesc="The mass desktop app"
+pkgdesc="Music Assistant Desktop app"
 arch=('x86_64')
 url="https://github.com/Un10ck3d/massapp"
 conflicts=(squeezelite)
@@ -28,8 +28,8 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-	install -DCm644 ./massdesktop.desktop "$pkgdir/usr/share/applications/massdesktop.desktop"
-  install -DCm644 ./app-icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/mass.png"
-  install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/mass
+	install -DCm644 ./music_assistant.desktop "$pkgdir/usr/share/applications/music_assistant.desktop"
+  install -DCm644 ./app-icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/music_assistant.png"
+  install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/music_assistant
   sudo install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/squeezelite
 }
