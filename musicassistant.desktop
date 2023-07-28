@@ -1,8 +1,8 @@
 [Desktop Entry]
 Categories=Music
 Comment=Music Assistant Desktop App
-Exec=music_assistant_desktop
-Icon=music_assistant
+Exec=musicassistantdesktop
+Icon=musicassistant
 Name=Music Assistant
 Terminal=false
 Type=Application

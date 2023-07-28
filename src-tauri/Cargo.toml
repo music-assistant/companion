@@ -1,5 +1,5 @@
 [package]
-name = "music_assistant_desktop"
+name = "musicassistantdesktop"
 version = "0.0.1"
 description = "Music Assistant Desktop App"
 authors = ["you"]

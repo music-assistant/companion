@@ -6,7 +6,7 @@ distDir = "../frontend-source/dist"
 withGlobalTauri = false
 
 [package]
-productName = "music_assistant_desktop"
+productName = "musicassistantdesktop"
 version = "0.0.1"
 
 [tauri.allowlist]
@@ -58,8 +58,9 @@ height = 600
 
 [tauri.updater]
 active = true
-dialog = false
+dialog = true
 pubkey = "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IERDRTNDNDM0NEE5NzQyQjcKUldTM1FwZEtOTVRqM0JCWFhNU3oyZDIyTmpFbStPQjF1bXBqaWNrQkZFN1V3c25SMVArOVN1WFoK"
+endpoints = ["https://raw.githubusercontent.com/Un10ck3d/massapp/releases/latest/download/latest.json"]
 
 [tauri.updater.windows]
 installMode = "passive"

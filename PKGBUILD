@@ -28,8 +28,8 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-	install -DCm644 ./music_assistant.desktop "$pkgdir/usr/share/applications/music_assistant.desktop"
-  install -DCm644 ./app-icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/music_assistant.png"
-  install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/music_assistant_desktop
+	install -DCm644 ./musicassistant.desktop "$pkgdir/usr/share/applications/musicassistant.desktop"
+  install -DCm644 ./app-icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/musicassistant.png"
+  install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/musicassistantdesktop
   sudo install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/squeezelite
 }
