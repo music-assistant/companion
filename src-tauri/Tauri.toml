@@ -42,7 +42,8 @@ externalBin = [ "binaries/squeezelite" ]
 bundleMediaFramework = true
 
 [tauri.bundle.macOS]
-entitlements = "../Entitlements.plist"
+entitlements = "Entitlements.plist"
+minimumSystemVersion = 11.3
 
 [tauri.security]
 
