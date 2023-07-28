@@ -43,7 +43,7 @@ bundleMediaFramework = true
 
 [tauri.bundle.macOS]
 entitlements = "Entitlements.plist"
-minimumSystemVersion = 11.3
+minimumSystemVersion = "11.3"
 
 [tauri.security]
 
