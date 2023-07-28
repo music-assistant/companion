@@ -7,7 +7,7 @@ withGlobalTauri = false
 
 [package]
 productName = "mass"
-version = "0.0.1"
+version = "0.0.2"
 
 [tauri.allowlist]
 all = false
@@ -40,6 +40,9 @@ externalBin = [ "binaries/squeezelite" ]
 
 [tauri.bundle.appimage]
 bundleMediaFramework = true
+
+[tauri.bundle.macOS]
+entitlements = "../Entitlements.plist"
 
 [tauri.security]
 
