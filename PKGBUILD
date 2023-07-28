@@ -5,7 +5,7 @@
 
 # Maintainer: Jonathan Bangert <jonathan@bangert.dk>
 pkgname='MassDesktop'
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="The mass desktop app"
 arch=('x86_64')
