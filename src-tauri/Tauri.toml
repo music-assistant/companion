@@ -12,6 +12,9 @@ version = "0.0.4"
 [tauri.allowlist]
 all = false
 
+[tauri.allowlist.window]
+all = true
+
 [tauri.allowlist.dialog]
 all = true
 
