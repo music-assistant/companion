@@ -6,7 +6,7 @@ distDir = "../frontend-source/dist"
 withGlobalTauri = false
 
 [package]
-productName = "music_assistant"
+productName = "music_assistant_desktop"
 version = "0.0.8"
 
 [tauri.allowlist]

@@ -5,7 +5,7 @@
 
 # Maintainer: Jonathan Bangert <jonathan@bangert.dk>
 pkgname='Music Assistant'
-_pkgname='music_assistant'
+_pkgname='massapp'
 pkgver=0.0.8
 pkgrel=1
 pkgdesc="Music Assistant Desktop app"
@@ -30,6 +30,6 @@ package() {
   cd "$srcdir/$_pkgname"
 	install -DCm644 ./music_assistant.desktop "$pkgdir/usr/share/applications/music_assistant.desktop"
   install -DCm644 ./app-icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/music_assistant.png"
-  install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/music_assistant
+  install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/music_assistant_desktop
   sudo install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/squeezelite
 }
