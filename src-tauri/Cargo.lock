@@ -1643,7 +1643,7 @@ dependencies = [
 
 [[package]]
 name = "musicassistantdesktop"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "discord-rich-presence",
  "gethostname",
