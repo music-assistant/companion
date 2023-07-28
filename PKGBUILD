@@ -19,6 +19,7 @@ source=("git+$url.git")
 
 build() {
   cd ".."
+  git submodule update --init --recursive
 	sudo npm install -g yarn
   yarn
   yarn run tauri build -b none
