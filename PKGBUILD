@@ -10,6 +10,7 @@ pkgrel=1
 pkgdesc="The mass desktop app"
 arch=('x86_64')
 url="https://github.com/Un10ck3d/massapp"
+conflicts=(squeezelite)
 license=('Apache-2.0')
 depends=(webkit2gtk)
 makedepends=(cargo git rust)
@@ -18,15 +19,16 @@ source=("git+$url.git")
 
 build() {
   cd ".."
+  git submodule update --init --recursive
 	sudo npm install -g yarn
   yarn
-  yarn run tauri build
+  yarn run tauri build -b none
 }
 
 package() {
   cd ".."
-	install -Dm644 ./massdesktop.desktop "$pkgdir/usr/share/applications/massdesktop.desktop"
-  install -Dm644 ./app-icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/mass.png"
-  install -Dm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/mass
-  install -Dm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/squeezelite
+	install -DCm644 ./massdesktop.desktop "$pkgdir/usr/share/applications/massdesktop.desktop"
+  install -DCm644 ./app-icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/mass.png"
+  install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/mass
+  sudo install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/squeezelite
 }
