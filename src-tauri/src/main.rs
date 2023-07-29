@@ -38,7 +38,7 @@ fn start_sqzlite(ip: String) {
 }
 
 fn main() {
-    let port = portpicker::pick_unused_port().expect("failed to find unused port");
+    let port: u16 = 22863;
 
     let mut context = tauri::generate_context!();
     let url = format!("http://localhost:{}", port).parse().unwrap();

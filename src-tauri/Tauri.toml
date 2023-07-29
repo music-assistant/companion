@@ -53,7 +53,7 @@ entitlements = 'Entitlements.plist'
 active = true
 dialog = true
 pubkey = "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IERDRTNDNDM0NEE5NzQyQjcKUldTM1FwZEtOTVRqM0JCWFhNU3oyZDIyTmpFbStPQjF1bXBqaWNrQkZFN1V3c25SMVArOVN1WFoK"
-endpoints = ["https://github.com/Un10ck3d/massapp/releases/latest/download/latest.json", "https://github.com/music-assistant/massapp/releases/latest/download/latest.json"]
+endpoints = ["https://github.com/Un10ck3d/massapp/releases/latest/download/latest.json"]
 
 [tauri.updater.windows]
 installMode = "passive"
