@@ -1,5 +1,5 @@
 {
-    "name": "musicassistantdesktop",
+    "name": "music-assistant-desktop",
     "version": "0.0.8",
     "type": "module",
     "description": "The Music Assistant frontend developed in Vue.",
