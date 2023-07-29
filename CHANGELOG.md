@@ -1,5 +1,9 @@
 # Changelog
 
+## V0.0.8
+
+Include frontend in release zip file
+
 ## V0.0.7
 
 Create individual builds for mac intel and apple silicon.
