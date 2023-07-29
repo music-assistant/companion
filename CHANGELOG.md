@@ -1,5 +1,9 @@
 # Changelog
 
+## V0.0.7
+
+Create individual builds for mac intel and apple silicon.
+
 ## V0.0.6
 
 Static port so localStorage works.
