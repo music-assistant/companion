@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Jonathan Bangert <jonathan@bangert.dk>
-pkgname='Music Assistant'
+pkgname='MusicAssistantDesktop'
 _pkgname='massapp'
 pkgver=0.0.4
 pkgrel=1
