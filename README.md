@@ -10,7 +10,7 @@ Right now the setup thing will always show upon opening. But it shuold save your
 
 [Squeezelite](https://en.wikipedia.org/wiki/Squeezelite) comes embedded into the application. This allows you playing music to your computer. The player name will be the same as your computer name. You can change the name in Music Assistant settings. You can also toggle if you wish to enable squeezelite at all.
 
-The app can also do Discord Rich Presence. Meaning it will show on discord what music you are playing. Example:
+The app can also do Discord Rich Presence. Meaning it will show on discord what music you are playing. It only shows the music playing on the app's squeezelite player. Example:
 ![image](https://github.com/Un10ck3d/massapp/assets/74015378/8de18bac-b963-4aba-bb61-5730b41759a9)
 
 Notice:
