@@ -13,14 +13,13 @@ edition = "2021"
 tauri-build = { version = "1.4", features = [] }
 
 [dependencies]
-tauri = { git="https://github.com/tauri-apps/tauri", branch = "fix/http-scope", version = "1.4", features = [ "window-all", "updater", "dialog-all", "shell-sidecar", "shell-open", "process-command-api", "devtools", "config-toml"] }
+tauri = { git="https://github.com/Un10ck3d/tauri", branch = "fix/http-scope", features = [ "window-all", "updater", "dialog-all", "shell-sidecar", "shell-open", "process-command-api", "devtools", "config-toml"] }
 discord-rich-presence = "0.2.3"
 tungstenite = {version = "0.19.0", features = ["native-tls"] }
 url = "2.4.0"
 serde = { version = "1.0.104", features = ["derive"] }
 serde_json = "1.0.48"
 gethostname = "0.4.3"
-wry = { git = "https://github.com/tauri-apps/wry", branch="windows/http"}
 
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem
