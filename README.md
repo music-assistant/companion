@@ -2,6 +2,9 @@
 
 ## WARNING: This is still in very early alpha. Bugs *will* occur
 
+## The app requires that the webserver is exposed. You can set that in the settings:
+![image](https://github.com/Un10ck3d/massapp/assets/74015378/8ea0b53a-e2a5-42c2-a98b-d04fcbe591bc)
+
 Right now the setup thing will always show upon opening. But it shuold save your choice from previous session.
 ![image](https://github.com/Un10ck3d/massapp/assets/74015378/cb97aa3e-12d8-4992-bfc6-0b58cedb81da)
 
