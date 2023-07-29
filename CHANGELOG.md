@@ -1,5 +1,9 @@
 # Changelog
 
+## V0.0.6
+
+Static port so localStorage works.
+
 ## V0.0.5
 
 Try fix windows ws not secure
