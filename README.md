@@ -22,13 +22,9 @@ Untill [this PR](https://github.com/tauri-apps/wry/pull/994) gets merged and rel
 
 #### Arch Linux
 
-You can use the PKGBUILD file to install the app
+This app is on the arch aur with the name `music-assistant-desktop`
 
-Clone the repo:
-`$ git clone https://github.com/Un10ck3d/massapp`
-
-Install the app:
-`$ makepkg -si`
+You can install it with yay: `yay music-assistant-desktop`
 
 #### Debian based distros
 
