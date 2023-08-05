@@ -4,7 +4,11 @@ mod discord_rpc;
 use gethostname::gethostname;
 use std::thread;
 use tauri::api::process::Command;
-use tauri::{utils::config::AppUrl, window::WindowBuilder, WindowUrl};
+
+#[cfg(target_os = "windows")]
+const IS_WINDOWS: bool = true;
+#[cfg(not(target_os = "windows"))]
+const IS_WINDOWS: bool = false;
 
 #[tauri::command]
 fn start_rpc(websocket: String) {
@@ -38,31 +42,41 @@ fn start_sqzlite(ip: String) {
 }
 
 fn main() {
-    let port: u16 = 22863;
+  use tauri::{utils::config::AppUrl, window::WindowBuilder, WindowUrl};
 
-    let mut context = tauri::generate_context!();
-    let url = format!("http://localhost:{}", port).parse().unwrap();
-    let window_url = WindowUrl::External(url);
-    // rewrite the config so the IPC is enabled on this URL
+  let port: u16 = 22863;
+
+  let window_url = if IS_WINDOWS {
+    WindowUrl::External(format!("http://localhost:{}", port).parse().unwrap())
+  } else {
+      WindowUrl::App("index.html".into())
+
+  };
+
+  let mut context = tauri::generate_context!();
+  let mut builder = tauri::Builder::default();
+
+  if IS_WINDOWS {
     context.config_mut().build.dist_dir = AppUrl::Url(window_url.clone());
-  
-    tauri::Builder::default()
-      .plugin(tauri_plugin_localhost::Builder::new(port).build())
-      .invoke_handler(tauri::generate_handler![start_rpc, start_sqzlite])
-      .setup(move |app| {
-        WindowBuilder::new(
-          app,
-          "main".to_string(),
-          if cfg!(dev) {
-            Default::default()
-          } else {
-            window_url
-          }
-        )
-        .title("Music Assistant")
-        .build()?;
-        Ok(())
-      })
-      .run(context)
-      .expect("error while running tauri application");
+    builder = builder.plugin(tauri_plugin_localhost::Builder::new(port).build());
+  }
+
+  builder
+    .invoke_handler(tauri::generate_handler![start_rpc, start_sqzlite])
+    .setup(move |app| {
+      WindowBuilder::new(
+        app,
+        "main".to_string(),
+        if cfg!(dev) {
+          Default::default()
+        } else {
+          window_url
+        }
+      )
+      .title("Music Assistant")
+      .build()?;
+      Ok(())
+    })
+    .run(context)
+    .expect("error while running tauri application");
 }

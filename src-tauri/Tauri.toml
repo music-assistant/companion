@@ -9,15 +9,6 @@ withGlobalTauri = false
 productName = "music-assistant-desktop"
 version = "0.0.8"
 
-[tauri.allowlist]
-all = false
-
-[tauri.allowlist.window]
-all = true
-
-[tauri.allowlist.dialog]
-all = true
-
 [tauri.allowlist.shell]
 all = false
 open = true
