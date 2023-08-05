@@ -1,6 +1,6 @@
 # Music Assistant Desktop App
 
-## WARNING: This is still in very early alpha. Bugs *will* occur
+## WARNING: This is still in very early alpha. Bugs *will* be present. Please help finding them. You can report it on the Discord server
 
 ## The app requires that the webserver is exposed. You can set that in the settings:
 ![image](https://github.com/Un10ck3d/massapp/assets/74015378/8ea0b53a-e2a5-42c2-a98b-d04fcbe591bc)
