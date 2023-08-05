@@ -1,5 +1,9 @@
 # Changelog
 
+## V0.0.9
+
+Only localhost on windows. Update frontend. Autoconnect on startup. Ip/Port config in core config
+
 ## V0.0.8
 
 Include frontend in release zip file

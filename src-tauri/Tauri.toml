@@ -7,7 +7,7 @@ withGlobalTauri = false
 
 [package]
 productName = "music-assistant-desktop"
-version = "0.0.8"
+version = "0.0.9"
 
 [tauri.allowlist.shell]
 all = false

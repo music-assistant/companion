@@ -1,6 +1,6 @@
 {
     "name": "music-assistant-desktop",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "type": "module",
     "description": "The Music Assistant frontend developed in Vue.",
     "license": "Apache-2.0",

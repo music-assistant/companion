@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Bangert <jonathan@bangert.dk>
 pkgname='music-assistant-desktop'
 _pkgname='massapp'
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Music Assistant Desktop app"
 arch=('x86_64')
