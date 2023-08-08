@@ -7,6 +7,9 @@ use tauri::api::process::Command;
 use tauri::{utils::config::AppUrl, window::WindowBuilder, WindowUrl};
 use std::sync::Once;
 
+static DISCORD_RPC_STARTER: Once = Once::new();
+static SQUEEZELITE_STARTER: Once = Once::new();
+
 // Set the IS_WINDOWS constant to true if the target OS is windows
 #[cfg(target_os = "windows")]
 const IS_WINDOWS: bool = true;
@@ -16,7 +19,7 @@ const IS_WINDOWS: bool = false;
 #[tauri::command]
 fn start_rpc(websocket: String) {
     // To prevent it from starting multiple times even if frontend gets reloaded
-    Once::new().call_once(|| {
+    DISCORD_RPC_STARTER.call_once(|| {
         // Start the discord rich presence manager in a new thread
         thread::spawn(move || {
             let hostname: std::ffi::OsString = gethostname();
@@ -28,7 +31,7 @@ fn start_rpc(websocket: String) {
 #[tauri::command]
 fn start_sqzlite(ip: String) {
     // To prevent it from starting multiple times even if frontend gets reloaded
-    Once::new().call_once(|| {
+    SQUEEZELITE_STARTER.call_once(|| {
         // Start squeezelite in a new thread
         thread::spawn(move || {
             let hostname: std::ffi::OsString = gethostname();
