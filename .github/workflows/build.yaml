@@ -28,10 +28,7 @@ jobs:
         with:
           submodules: true
 
-      - uses: actions/checkout@v3
-        with:
-          submodules: true
-      - name: semver
+      - id: semver
         uses: SOLIDSoftworks/semver-tags@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
@@ -89,7 +86,7 @@ jobs:
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with: 
-          releaseName: 
+          tagName: ${{ steps.semver.semantic-version }}
           releaseBody: "Fixes"
 
       - name: Build the app (Windows)
@@ -101,7 +98,7 @@ jobs:
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
-
+          tagName: ${{ steps.semver.semantic-version }}
           releaseBody: "Fixes"
 
       - name: Build the app (Mac (Apple Silicon))
@@ -114,7 +111,7 @@ jobs:
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
           args: --target aarch64-apple-darwin
-
+          tagName: ${{ steps.semver.semantic-version }}
           releaseBody: "Fixes"
 
       - name: Build the app (Mac)
@@ -126,5 +123,5 @@ jobs:
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
-
+          tagName: ${{ steps.semver.semantic-version }}
           releaseBody: "Fixes"
