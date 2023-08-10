@@ -36,7 +36,6 @@ jobs:
         uses: Reedyuk/NPM-Version@1.2.1
         with:
           version: ${{ steps.semver.outputs.semantic-version }}
-          git-tag-version: 'true'
 
       - name: Commit and push changes
         run: |
