@@ -68,18 +68,9 @@ jobs:
         with:
           submodules: true
 
-      - id: semver
-        uses: SOLIDSoftworks/semver-tags@v1
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
-          tag-prefix: 'v'
-          incremented-value: ${{ inputs.version }}
-  
-      - name: NPM-Version
-        uses: Reedyuk/NPM-Version@1.2.1
-        with:
-          version: ${{ steps.semver.semantic-version }}
-          git-tag-version: 'true'
+      - name: Pull latest changes
+        run: |
+          git pull
 
       - name: Install dependencies (Linux)
         if: matrix.platform == 'ubuntu-22.04'
@@ -126,7 +117,8 @@ jobs:
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with: 
-          tagName: ${{ steps.semver.semantic-version }}
+          tagName: ${{ needs.update_version.outputs.version }}
+          releaseName: "Music Assistant desktop ${{ needs.update_version.outputs.version }}"
           releaseBody: "Fixes"
 
       - name: Build the app (Windows)
@@ -138,7 +130,8 @@ jobs:
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
-          tagName: ${{ steps.semver.semantic-version }}
+          tagName: ${{ needs.update_version.outputs.version }}
+          releaseName: "Music Assistant desktop ${{ needs.update_version.outputs.version }}"
           releaseBody: "Fixes"
 
       - name: Build the app (Mac (Apple Silicon))
@@ -151,7 +144,8 @@ jobs:
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
           args: --target aarch64-apple-darwin
-          tagName: ${{ steps.semver.semantic-version }}
+          tagName: ${{ needs.update_version.outputs.version }}
+          releaseName: "Music Assistant desktop ${{ needs.update_version.outputs.version }}"
           releaseBody: "Fixes"
 
       - name: Build the app (Mac)
@@ -163,5 +157,6 @@ jobs:
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
-          tagName: ${{ steps.semver.semantic-version }}
+          tagName: ${{ needs.update_version.outputs.version }}
+          releaseName: "Music Assistant desktop ${{ needs.update_version.outputs.version }}"
           releaseBody: "Fixes"
