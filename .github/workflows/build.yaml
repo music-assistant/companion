@@ -36,6 +36,11 @@ jobs:
         uses: Reedyuk/NPM-Version@1.2.1
         with:
           version: ${{ steps.semver.outputs.semantic-version }}
+      
+      - name: Update cargo and tauri version
+        run: |
+          sed -i '0,/\(version *= *\).*/s//\1"${{ steps.semver.outputs.semantic-version }}"/' src-tauri/Cargo.toml
+          sed -i '0,/\(version *= *\).*/s//\1"${{ steps.semver.outputs.semantic-version }}"/' src-tauri/Tauri.toml
 
       - name: Commit and push changes
         run: |
