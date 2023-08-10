@@ -29,7 +29,6 @@ jobs:
         uses: SOLIDSoftworks/semver-tags@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
-          tag-prefix: 'v'
           incremented-value: ${{ inputs.version }}
 
       - name: NPM-Version
@@ -117,7 +116,7 @@ jobs:
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with: 
-          tagName: v${{ needs.update_version.outputs.version }}
+          tagName: ${{ needs.update_version.outputs.version }}
           releaseName: "Music Assistant Desktop App ${{ needs.update_version.outputs.version }}"
           releaseBody: "Fixes"
 
@@ -130,7 +129,7 @@ jobs:
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
-          tagName: v${{ needs.update_version.outputs.version }}
+          tagName: ${{ needs.update_version.outputs.version }}
           releaseName: "Music Assistant Desktop App ${{ needs.update_version.outputs.version }}"
           releaseBody: "Fixes"
 
@@ -144,7 +143,7 @@ jobs:
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
           args: --target aarch64-apple-darwin
-          tagName: v${{ needs.update_version.outputs.version }}
+          tagName: ${{ needs.update_version.outputs.version }}
           releaseName: "Music Assistant Desktop App ${{ needs.update_version.outputs.version }}"
           releaseBody: "Fixes"
 
@@ -157,6 +156,6 @@ jobs:
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
-          tagName: v${{ needs.update_version.outputs.version }}
+          tagName: ${{ needs.update_version.outputs.version }}
           releaseName: "Music Assistant Desktop App ${{ needs.update_version.outputs.version }}"
           releaseBody: "Fixes"
