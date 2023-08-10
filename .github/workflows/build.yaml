@@ -12,7 +12,43 @@ on:
           - major
 
 jobs:
+  update_version:
+    permissions:
+      contents: write
+    runs-on: ubuntu-22.04
+    outputs:
+      version: ${{ steps.semver.semantic-version }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - id: semver
+        uses: SOLIDSoftworks/semver-tags@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+          tag-prefix: 'v'
+          incremented-value: ${{ inputs.version }}
+
+      - name: NPM-Version
+        uses: Reedyuk/NPM-Version@1.2.1
+        with:
+          version: ${{ steps.semver.semantic-version }}
+          git-tag-version: 'true'
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "Jonathan Bangert"
+          git config --global user.email "jonathan@bangert.dk"
+    
+          git add -A
+          git commit -m "Update version to ${{ steps.semver.semantic-version }}"
+          git push
+
   build:
+    needs: update_version
     permissions:
       contents: write
     strategy:
