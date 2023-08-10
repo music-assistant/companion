@@ -1,15 +1,14 @@
 {
     "name": "music-assistant-desktop",
-    "version": "0.0.10",
+    "version": "0.0.13",
     "type": "module",
     "description": "The Music Assistant frontend developed in Vue.",
     "license": "Apache-2.0",
     "scripts": {
-      "tauri": "tauri",
-      "build": "cd frontend-source/ && yarn build"
+        "tauri": "tauri",
+        "build": "cd frontend-source/ && yarn build"
     },
     "devDependencies": {
-      "@tauri-apps/cli": "^1.4.0"
+        "@tauri-apps/cli": "^1.4.0"
     }
-  }
-  
+}
