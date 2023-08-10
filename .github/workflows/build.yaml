@@ -1,6 +1,15 @@
 name: Publish
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to bump to'
+        required: true
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
 
 jobs:
   create-release:
@@ -14,6 +23,19 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
+      - name: semver
+        uses: SOLIDSoftworks/semver-tags@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+          tag-prefix: 'v'
+          incremented-value: ${{ inputs.version }}
+
+      - name: NPM-Version
+        uses: Reedyuk/NPM-Version@1.2.1
+        with:
+          version: ${{ steps.semver.semantic-version }}
+          git-tag-version: 'true'
+
       - name: setup node
         uses: actions/setup-node@v3
         with:
@@ -37,7 +59,6 @@ jobs:
             return data.id
 
   build:
-    needs: create-release
     permissions:
       contents: write
     strategy:
@@ -98,7 +119,7 @@ jobs:
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with: 
-          releaseId: ${{ needs.create-release.outputs.release_id }}
+          releaseName: 
           releaseBody: "Fixes"
 
       - name: Build the app (Windows)
@@ -110,7 +131,7 @@ jobs:
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
-          releaseId: ${{ needs.create-release.outputs.release_id }}
+
           releaseBody: "Fixes"
 
       - name: Build the app (Mac (Apple Silicon))
@@ -123,7 +144,7 @@ jobs:
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
           args: --target aarch64-apple-darwin
-          releaseId: ${{ needs.create-release.outputs.release_id }}
+
           releaseBody: "Fixes"
 
       - name: Build the app (Mac)
@@ -135,27 +156,5 @@ jobs:
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
-          releaseId: ${{ needs.create-release.outputs.release_id }}
+
           releaseBody: "Fixes"
-
-  publish-release:
-    permissions:
-      contents: write
-    runs-on: ubuntu-20.04
-    needs: [create-release, build]
-
-    steps:
-      - name: publish release
-        id: publish-release
-        uses: actions/github-script@v6
-        env:
-            release_id: ${{ needs.create-release.outputs.release_id }}
-        with:
-          script: |
-            github.rest.repos.updateRelease({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            release_id: process.env.release_id,
-            draft: false,
-            prerelease: false
-            })
