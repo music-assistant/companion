@@ -17,7 +17,7 @@ jobs:
       contents: write
     runs-on: ubuntu-22.04
     outputs:
-      version: ${{ steps.semver.semantic-version }}
+      version: ${{ steps.semver.outputs.semantic-version }}
 
     steps:
       - name: Checkout repository
@@ -35,7 +35,7 @@ jobs:
       - name: NPM-Version
         uses: Reedyuk/NPM-Version@1.2.1
         with:
-          version: ${{ steps.semver.semantic-version }}
+          version: ${{ steps.semver.outputs.semantic-version }}
           git-tag-version: 'true'
 
       - name: Commit and push changes
@@ -44,7 +44,7 @@ jobs:
           git config --global user.email "jonathan@bangert.dk"
     
           git add -A
-          git commit -m "Update version to ${{ steps.semver.semantic-version }}"
+          git commit -m "Update version to ${{ steps.semver.outputs.semantic-version }}"
           git push
 
   build:
