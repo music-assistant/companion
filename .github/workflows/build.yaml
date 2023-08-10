@@ -99,6 +99,7 @@ jobs:
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with: 
           releaseId: ${{ needs.create-release.outputs.release_id }}
+          releaseBody: "Fixes"
 
       - name: Build the app (Windows)
         if: matrix.platform == 'windows-latest'
@@ -110,6 +111,7 @@ jobs:
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
           releaseId: ${{ needs.create-release.outputs.release_id }}
+          releaseBody: "Fixes"
 
       - name: Build the app (Mac (Apple Silicon))
         if: matrix.platform == 'macos-latest'
@@ -122,6 +124,7 @@ jobs:
         with:
           args: --target aarch64-apple-darwin
           releaseId: ${{ needs.create-release.outputs.release_id }}
+          releaseBody: "Fixes"
 
       - name: Build the app (Mac)
         if: matrix.platform == 'macos-12'
