@@ -7,7 +7,7 @@ on:
         required: true
         type: choice
         options:
-          - patcch
+          - patch
           - minor
           - major
 
