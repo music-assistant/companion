@@ -135,16 +135,16 @@ pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
             .end(current_song.end);
 
         // The buttons of the activity
-        if current_song.preview_url.contains("https://") {
-            let buttons: Vec<activity::Button<'_>> = vec![
+        let buttons: Vec<activity::Button<'_>> = if current_song.preview_url.contains("https://") {
+            vec![
                 activity::Button::new("Download", "https://github.com/music-assistant/music-assistant-desktop/releases/latest/"),
                 activity::Button::new("Preview song!", &current_song.preview_url),
-            ];
+            ]
         } else {
-            let buttons: Vec<activity::Button<'_>> = vec![
+            vec![
                 activity::Button::new("Download", "https://github.com/music-assistant/music-assistant-desktop/releases/latest/"),
-            ];
-        }
+            ]
+        };
 
         // Construct the final payload
         let payload: activity::Activity<'_> = activity::Activity::new()
