@@ -14,6 +14,9 @@ all = false
 open = true
 sidecar = true
 
+[tauri.allowlist.dialog]
+message = true
+
 [[tauri.allowlist.shell.scope]]
 name = "squeezelite"
 sidecar = true
