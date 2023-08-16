@@ -41,6 +41,7 @@ jobs:
         run: |
           sed -i '0,/\(version *= *\).*/s//\1"${{ steps.semver.outputs.semantic-version }}"/' src-tauri/Cargo.toml
           sed -i '0,/\(version *= *\).*/s//\1"${{ steps.semver.outputs.semantic-version }}"/' src-tauri/Tauri.toml
+          sed -i '/name = "music-assistant-desktop"/{N;s/\(version *= *\)".*"/\1"'"${{ steps.semver.outputs.semantic-version }}"'"/;}' src-tauri/Cargo.lock
 
       - name: Commit and push changes
         run: |
