@@ -7,12 +7,15 @@ withGlobalTauri = false
 
 [package]
 productName = "music-assistant-desktop"
-version = "0.0.12"
+version = "0.0.13"
 
 [tauri.allowlist.shell]
 all = false
 open = true
 sidecar = true
+
+[tauri.allowlist.dialog]
+message = true
 
 [[tauri.allowlist.shell.scope]]
 name = "squeezelite"
