@@ -168,4 +168,4 @@ jobs:
         with:
           tag: v${{ needs.update_version.outputs.version }}
           asset_name: music-assistant-desktop-${{ needs.update_version.outputs.version  }}
-          file: /src-tauri/target/release/music-assistant-desktop
+          file: src-tauri/target/release/music-assistant-desktop
