@@ -34,9 +34,9 @@ Example of Discord Rich Presence:
 
 ### Arch Linux
 
-This app is on the arch aur with the name `music-assistant-desktop`
+This app is on the arch aur with the name `music-assistant-desktop` or `music-assistant-desktop-bin` for just the binary
 
-You can install it with yay: `yay music-assistant-desktop`
+You can install it with yay: `yay music-assistant-desktop-bin`
 
 ### Debian (And debian based distrobutions)
 
