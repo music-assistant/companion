@@ -8,6 +8,7 @@ The Desktop app for Music Assistant! This app, among other things, enables you t
 ## Setup
 
 When starting the app for the first time you are asked about some information about the Music Assistant Server. 
+
 ![image](https://github.com/Un10ck3d/massapp/assets/74015378/cb97aa3e-12d8-4992-bfc6-0b58cedb81da)
 
 > [!IMPORTANT]
@@ -28,7 +29,7 @@ Example of Discord Rich Presence:
 
 ![Example of Discord Rich Presence](https://github.com/Un10ck3d/massapp/assets/74015378/8de18bac-b963-4aba-bb61-5730b41759a9)
 
-> [!INFO]
+> [!NOTE]
 > Only on Windows:
 >
 > - There seems to be a layout issue with the sidebar on windows
