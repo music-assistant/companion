@@ -38,9 +38,9 @@ Example of Discord Rich Presence:
 
 ### Arch Linux
 
-This app is on the arch aur with the name `music-assistant-desktop`
+This app is on the arch aur with the name `music-assistant-desktop` or `music-assistant-desktop-bin` for just the binary
 
-You can install it with yay: `yay music-assistant-desktop`
+You can install it with yay: `yay music-assistant-desktop-bin`
 
 ### Debian (And debian based distrobutions)
 
@@ -52,7 +52,10 @@ You can download the AppImage from the [releases](https://github.com/Un10ck3d/ma
 
 ### MacOS
 
-You can download the .dmg from the [releases](https://github.com/Un10ck3d/massapp/releases/latest/). This build is universal for both Intel and Apple Silicon computers
+You can download the .dmg from the [releases](https://github.com/Un10ck3d/massapp/releases/latest/).
+
+> [!IMPORTANT]
+>The app is unsigned since we currently dont want to spend 90 USD/yr for an Apple Developer account. Therefore it will warn you about an untrusted developer/app downloaded from internet. To open it follow [these instructions](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac) 
 
 ### Windows
 
