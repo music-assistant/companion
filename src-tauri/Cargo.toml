@@ -1,7 +1,7 @@
 [package]
-name = "music-assistant-desktop"
+name = "music-assistant-companion"
 version = "0.0.16"
-description = "Music Assistant Desktop App"
+description = "Music Assistant Companion App"
 authors = ["you"]
 license = "Apache-2.0"
 repository = "https://github.com/Un10ck3d/massapp"

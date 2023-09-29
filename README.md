@@ -7,7 +7,7 @@ The Desktop app for Music Assistant! This app, among other things, enables you t
 
 ## Setup
 
-When starting the app for the first time you are asked about some information about the Music Assistant Server. 
+When starting the app for the first time you are asked about some information about the Music Assistant Server.
 
 ![image](https://github.com/Un10ck3d/massapp/assets/74015378/cb97aa3e-12d8-4992-bfc6-0b58cedb81da)
 
@@ -56,7 +56,7 @@ You can download the AppImage from the [releases](https://github.com/Un10ck3d/ma
 You can download the .dmg from the [releases](https://github.com/Un10ck3d/massapp/releases/latest/).
 
 > [!IMPORTANT]
->The app is unsigned since we currently dont want to spend 90 USD/yr for an Apple Developer account. Therefore it will warn you about an untrusted developer/app downloaded from internet. To open it follow [these instructions](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac) 
+>The app is unsigned since we currently dont want to spend 90 USD/yr for an Apple Developer account. Therefore it will warn you about an untrusted developer/app downloaded from internet. To open it follow [these instructions](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac)
 
 ### Windows
 

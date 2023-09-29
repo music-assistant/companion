@@ -6,7 +6,7 @@ distDir = "../frontend-source/dist"
 withGlobalTauri = false
 
 [package]
-productName = "music-assistant-desktop"
+productName = "music-assistant-companion"
 version = "0.0.16"
 
 [tauri.allowlist.shell]
@@ -47,7 +47,7 @@ entitlements = 'Entitlements.plist'
 active = true
 dialog = true
 pubkey = "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IERDRTNDNDM0NEE5NzQyQjcKUldTM1FwZEtOTVRqM0JCWFhNU3oyZDIyTmpFbStPQjF1bXBqaWNrQkZFN1V3c25SMVArOVN1WFoK"
-endpoints = ["https://github.com/music-assistant/music-assistant-desktop/releases/latest/download/latest.json"]
+endpoints = ["https://github.com/music-assistant/music-assistant-desktop/releases/latest/download/latest.json", "https://github.com/music-assistant/companion/releases/latest/download/latest.json"]
 
 [tauri.updater.windows]
 installMode = "passive"

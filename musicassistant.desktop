@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=Music
-Comment=Music Assistant Desktop App
-Exec=music-assistant-desktop
+Comment=Music Assistant Companion App
+Exec=music-assistant-companion
 Icon=musicassistant
 Name=Music Assistant
 Terminal=false

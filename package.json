@@ -1,8 +1,8 @@
 {
-    "name": "music-assistant-desktop",
+    "name": "music-assistant-companion",
     "version": "0.0.16",
     "type": "module",
-    "description": "The Music Assistant frontend developed in Vue.",
+    "description": "The Music Assistant Companion app developed in Tauri.",
     "license": "Apache-2.0",
     "scripts": {
         "tauri": "tauri",
