@@ -39,10 +39,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "externalBin": ["binaries/squeezelite"],
-      "appimage": {
-        "bundleMediaFramework": true
-      }
+      "externalBin": ["binaries/squeezelite"]
     },
     "security": {
       "csp": null,
@@ -52,9 +49,7 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "Mass",
-        "width": 800,
-        "height": 600
+        "title": "Music Assistant"
       }
     ],
     "updater": {
