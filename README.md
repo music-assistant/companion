@@ -29,12 +29,6 @@ Example of Discord Rich Presence:
 
 ![Example of Discord Rich Presence](https://github.com/Un10ck3d/massapp/assets/74015378/8de18bac-b963-4aba-bb61-5730b41759a9)
 
-> [!NOTE]
-> Only on Windows:
->
-> - There seems to be a layout issue with the sidebar on windows
-> - Untill [this PR](https://github.com/tauri-apps/tauri/pull/7645) gets merged and released the app runs the frontend openly on your computer on port 22863. The reason behind that is that webkit2 in windows dosnt allow connections to unsecured websockets if the app itself is secured with TLS..
-
 ## Installation
 
 ### Arch Linux
