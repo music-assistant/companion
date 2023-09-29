@@ -37,7 +37,7 @@ pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
     // Continuously update the thing
     loop {
         // Read the websocket
-        let msg: tungstenite::Message = socket.read_message().expect("msg");
+        let msg: tungstenite::Message = socket.read().expect("msg");
 
         // Parse the response to text
         let msg_text: &str = msg
