@@ -34,7 +34,7 @@ fn start_sqzlite(ip: String) {
                     "-s",
                     ip.as_str(),
                     "-M",
-                    "MusicAssistantDesktop",
+                    "Companion",
                     "-n",
                     hostname
                         .to_str()

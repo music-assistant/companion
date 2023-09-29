@@ -42,7 +42,7 @@ jobs:
           sudo apt install jq
           sed -i '0,/\(version *= *\).*/s//\1"${{ steps.semver.outputs.semantic-version }}"/' src-tauri/Cargo.toml
           jq '.package.version="${{ steps.semver.outputs.semantic-version }}"' src-tauri/tauri.conf.json > tauri.config.json.new && mv tauri.config.json.new src-tauri/tauri.conf.json
-          sed -i '/name = "music-assistant-desktop"/{N;s/\(version *= *\)".*"/\1"'"${{ steps.semver.outputs.semantic-version }}"'"/;}' src-tauri/Cargo.lock
+          sed -i '/name = "music-assistant-companion"/{N;s/\(version *= *\)".*"/\1"'"${{ steps.semver.outputs.semantic-version }}"'"/;}' src-tauri/Cargo.lock
 
       - name: Commit and push changes
         run: |
@@ -120,7 +120,7 @@ jobs:
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with: 
           tagName: v${{ needs.update_version.outputs.version }}
-          releaseName: "Music Assistant Desktop App ${{ needs.update_version.outputs.version }}"
+          releaseName: "Music Assistant DesCompanionktop App ${{ needs.update_version.outputs.version }}"
           releaseBody: "Fixes"
 
       - name: Build the app (Windows)
@@ -133,7 +133,7 @@ jobs:
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
           tagName: v${{ needs.update_version.outputs.version }}
-          releaseName: "Music Assistant Desktop App ${{ needs.update_version.outputs.version }}"
+          releaseName: "Music Assistant Companion App ${{ needs.update_version.outputs.version }}"
           releaseBody: "Fixes"
 
       - name: Build the app (Mac (Apple Silicon))
@@ -147,7 +147,7 @@ jobs:
         with:
           args: --target aarch64-apple-darwin
           tagName: v${{ needs.update_version.outputs.version }}
-          releaseName: "Music Assistant Desktop App ${{ needs.update_version.outputs.version }}"
+          releaseName: "Music Assistant Companion App ${{ needs.update_version.outputs.version }}"
           releaseBody: "Fixes"
 
       - name: Build the app (Mac)
@@ -160,7 +160,7 @@ jobs:
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
           tagName: v${{ needs.update_version.outputs.version }}
-          releaseName: "Music Assistant Desktop App ${{ needs.update_version.outputs.version }}"
+          releaseName: "Music Assistant Companion App ${{ needs.update_version.outputs.version }}"
           releaseBody: "Fixes"
 
       - name: Upload linux binary
@@ -168,8 +168,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           tag: v${{ needs.update_version.outputs.version }}
-          asset_name: music-assistant-desktop-${{ needs.update_version.outputs.version  }}
-          file: src-tauri/target/release/music-assistant-desktop
+          asset_name: music-assistant-companion-${{ needs.update_version.outputs.version  }}
+          file: src-tauri/target/release/music-assistant-companion
 
       - name: Upload squeezelite binary
         if: matrix.platform == 'ubuntu-22.04'
