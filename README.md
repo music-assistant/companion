@@ -1,6 +1,6 @@
-# Music Assistant Desktop App 🎶
+# Music Assistant Companion App 🎶
 
-The Desktop app for Music Assistant! This app, among other things, enables you to play music from Music Assistant directly to your computer! Enjoy 🎵
+The companion app for Music Assistant! This app, among other things, enables you to play music from Music Assistant directly to your computer! Enjoy 🎵
 
 > [!IMPORTANT]
 > This is still in very early alpha. Bugs *will* be present. Please help finding them, you can report any bugs on the [Discord server](https://discord.gg/kaVm8hGpne) or in the [repo issues](https://github.com/music-assistant/music-assistant-desktop/issues)
