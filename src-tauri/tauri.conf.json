@@ -24,9 +24,6 @@
           }
         ]
       },
-      "dialog": {
-        "message": true
-      },
       "process": {
         "relaunch": true
       }
