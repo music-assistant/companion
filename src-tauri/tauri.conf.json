@@ -11,6 +11,12 @@
     "version": "0.0.18"
   },
   "tauri": {
+    "systemTray": {
+      "iconPath": "icons/icon.png",
+      "title": "Music Assistant",
+      "iconAsTemplate": false,
+      "menuOnLeftClick": false
+    },
     "allowlist": {
       "shell": {
         "all": false,
