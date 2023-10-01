@@ -1704,6 +1704,7 @@ dependencies = [
  "serde_json",
  "tauri",
  "tauri-build",
+ "tauri-plugin-websocket",
  "tungstenite",
  "url",
 ]
@@ -3130,6 +3131,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "tauri-plugin-websocket"
+version = "0.0.0"
+source = "git+https://github.com/tauri-apps/plugins-workspace?branch=v1#9b96996b5a90a6a57d587ce4312975f13a4d8bc2"
+dependencies = [
+ "futures-util",
+ "log",
+ "rand 0.8.5",
+ "serde",
+ "serde_json",
+ "tauri",
+ "thiserror",
+ "tokio",
+ "tokio-tungstenite",
+]
+
+[[package]]
 name = "tauri-runtime"
 version = "0.14.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3337,6 +3354,20 @@ checksum = "bbae76ab933c85776efabc971569dd6119c580d8f5d448769dec1764bf796ef2"
 dependencies = [
  "native-tls",
  "tokio",
+]
+
+[[package]]
+name = "tokio-tungstenite"
+version = "0.20.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "212d5dcb2a1ce06d81107c3d0ffa3121fe974b73f068c8282cb1c32328113b6c"
+dependencies = [
+ "futures-util",
+ "log",
+ "native-tls",
+ "tokio",
+ "tokio-native-tls",
+ "tungstenite",
 ]
 
 [[package]]

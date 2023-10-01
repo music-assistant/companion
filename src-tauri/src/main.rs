@@ -54,6 +54,7 @@ fn main() {
     // Run the tauri application
     builder
         .invoke_handler(tauri::generate_handler![start_rpc, start_sqzlite])
+        .plugin(tauri_plugin_websocket::init())
         .run(context)
         .expect("error while running tauri application");
 }
