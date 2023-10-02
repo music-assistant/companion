@@ -9,6 +9,12 @@ use tauri::{
     CustomMenuItem, Manager, SystemTray, SystemTrayEvent, SystemTrayMenu, SystemTrayMenuItem,
 };
 
+#[derive(Clone, serde::Serialize)]
+struct Payload {
+  args: Vec<String>,
+  cwd: String,
+}
+
 static DISCORD_RPC_STARTER: Once = Once::new();
 static SQUEEZELITE_STARTER: Once = Once::new();
 
@@ -123,6 +129,11 @@ fn main() {
         .invoke_handler(tauri::generate_handler![start_rpc, start_sqzlite])
         .system_tray(tray)
         .plugin(tauri_plugin_websocket::init())
+        .plugin(tauri_plugin_single_instance::init(|app, argv, cwd| {
+            println!("{}, {argv:?}, {cwd}", app.package_info().name);
+
+            app.emit_all("single-instance", Payload { args: argv, cwd }).unwrap();
+        }))
         .run(context)
         .expect("error while running tauri application");
 }
