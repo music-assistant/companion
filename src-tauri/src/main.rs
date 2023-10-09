@@ -106,7 +106,7 @@ fn main() {
             }
             SystemTrayEvent::MenuItemClick { id, .. } => match id.as_str() {
                 "quit" => {
-                    std::process::exit(0);
+                    app.exit(1);
                 }
                 "hide" => {
                     let window: tauri::Window = app.get_window("main").unwrap();
