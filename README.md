@@ -3,6 +3,22 @@
    <img width="150" height="150" src="app-icon.png" alt="Logo">
   </p>
 	<h1 align="center"><b>Music Assistant Companion</b></h1>
+	 <p align="center" style="margin-bottom:0px !important;">
+	<a href="https://github.com/music-assistant/music-assistant-desktop/releases/latest">
+	  <img src="https://img.shields.io/github/release/music-assistant/music-assistant-desktop?display_name=tag&include_prereleases&label=Latest%20version" alt="latest version">
+	</a>
+	<a href="https://discord.gg/kaVm8hGpne">
+	  <img src="https://img.shields.io/discord/753947050995089438?label=Discord&logo=discord&color=5865F2" alt="discord">
+	</a>
+	<a href="https://github.com/sponsors/music-assistant">
+	  <img src="https://img.shields.io/github/sponsors/music-assistant?label=Sponsors" alt="sponsor">
+	</a>
+	<a href="https://github.com/music-assistant/music-assistant-desktop/blob/main/LICENSE">
+    	<img src="https://img.shields.io/static/v1?label=Licence&message=Apache-2.0&color=000" />
+  	</a>
+	<img src="https://img.shields.io/static/v1?label=Bundled%20Size&message=25.1MB&color=0974B4" />
+  	<img src="https://img.shields.io/static/v1?label=Stage&message=Alpha&color=2BB4AB" />
+	 </p>
 	<p align="center">
 		The desktop companion app for Music Assistant!
     <br />
@@ -15,7 +31,6 @@
 		<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.22/music-assistant-companion_0.0.22_x64_en-US.msi">Windows</a> ·
     Linux (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.22/music-assistant-companion_0.0.22_amd64.deb">Debian</a> | <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.22/music-assistant-companion_0.0.22_amd64.AppImage">Other</a>)
     <br />
-    <i>Current version: <code>v0.0.22</code></i>
   </p>
 </p>
 
