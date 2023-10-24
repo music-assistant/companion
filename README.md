@@ -1,6 +1,23 @@
-# Music Assistant Companion App 🎶
-
-The companion app for Music Assistant! This app, among other things, enables you to play music from Music Assistant directly to your computer! Enjoy 🎵
+<p align="center">
+  <p align="center">
+   <img width="150" height="150" src="app-icon.png" alt="Logo">
+  </p>
+	<h1 align="center"><b>Music Assistant Companion</b></h1>
+	<p align="center">
+		The desktop companion app for Music Assistant!
+    <br />
+    <a href="https://github.com/music-assistant/server"><strong>Music Assistant Server »</strong></a>
+    <br />
+    <br />
+    <b>Download for </b>
+    macOS (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.22/music-assistant-companion_0.0.22_aarch64.dmg">Apple Silicon</a> |
+    <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.22/music-assistant-companion_0.0.22_x64.dmg">Intel</a>) ·
+		<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.22/music-assistant-companion_0.0.22_x64_en-US.msi">Windows</a> ·
+    Linux (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.22/music-assistant-companion_0.0.22_amd64.deb">Debian</a> | <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.22/music-assistant-companion_0.0.22_amd64.AppImage">Other</a>)
+    <br />
+    <i>Current version: <code>v0.0.22</code></i>
+  </p>
+</p>
 
 > [!IMPORTANT]
 > This is still in very early alpha. Bugs *will* be present. Please help finding them, you can report any bugs on the [Discord server](https://discord.gg/kaVm8hGpne) or in the [repo issues](https://github.com/music-assistant/music-assistant-desktop/issues)
