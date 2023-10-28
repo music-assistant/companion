@@ -19,7 +19,7 @@ tauri-plugin-single-instance = { git = "https://github.com/tauri-apps/plugins-wo
 discord-rich-presence = "0.2.3"
 tungstenite = {version = "0.20.1", features = ["native-tls"] }
 url = "2.4.1"
-serde = { version = "1.0.189", features = ["derive"] }
+serde = { version = "1.0.190", features = ["derive"] }
 serde_json = "1.0.107"
 gethostname = "0.4.3"
 [features]
