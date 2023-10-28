@@ -1,9 +1,9 @@
 {
   "build": {
-    "beforeDevCommand": "cd frontend-source && yarn dev",
-    "beforeBuildCommand": "cd frontend-source/ && yarn && yarn build",
+    "beforeDevCommand": "cd frontend && yarn dev",
+    "beforeBuildCommand": "cd frontend/ && yarn && yarn build",
     "devPath": "http://localhost:1420",
-    "distDir": "../frontend-source/dist",
+    "distDir": "../frontend/dist",
     "withGlobalTauri": false
   },
   "package": {

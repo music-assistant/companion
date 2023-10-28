@@ -98,7 +98,7 @@ Then clone the repository and install the node dependencies
 $ git clone https://github.com/music-assistant/music-assistant-desktop --recursive
 $ cd music-assistant-desktop
 $ yarn install
-$ cd frontend-source
+$ cd frontend
 $ yarn install
 $ cd ..
 ```

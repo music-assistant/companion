@@ -1,4 +1,4 @@
-[submodule "frontend-source"]
-	path = frontend-source
+[submodule "frontend"]
+	path = frontend
   url = https://github.com/music-assistant/frontend.git
-  branch = tauri-app
+  branch = companion
