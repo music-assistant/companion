@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@tauri-apps/api@1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@tauri-apps/api/-/api-1.5.1.tgz#9074476c4323f71351db624e9711c99277cdfb99"
+  integrity sha512-6unsZDOdlXTmauU3NhWhn+Cx0rODV+rvNvTdvolE5Kls5ybA6cqndQENDt1+FS0tF7ozCP66jwWoH6a5h90BrA==
+
 "@tauri-apps/cli-darwin-arm64@1.5.6":
   version "1.5.6"
   resolved "https://registry.yarnpkg.com/@tauri-apps/cli-darwin-arm64/-/cli-darwin-arm64-1.5.6.tgz#0d68eaf6fa1b35197a9d4991ac5377e6085a569a"
@@ -67,3 +72,9 @@
     "@tauri-apps/cli-win32-arm64-msvc" "1.5.6"
     "@tauri-apps/cli-win32-ia32-msvc" "1.5.6"
     "@tauri-apps/cli-win32-x64-msvc" "1.5.6"
+
+"tauri-plugin-window-state-api@https://github.com/tauri-apps/tauri-plugin-window-state#v1":
+  version "0.0.0"
+  resolved "https://github.com/tauri-apps/tauri-plugin-window-state#813087b0c24f9b6a1e8bc25e8d1f8e151b079e3e"
+  dependencies:
+    "@tauri-apps/api" "1.5.1"
