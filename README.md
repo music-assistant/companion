@@ -92,6 +92,12 @@ You can download the .msi installer from the [releases](https://github.com/Un10c
 
 If you wish to build the app yourself you should first follow [the offical tauri prerequisites](https://tauri.app/v1/guides/getting-started/prerequisites)
 
+Next, make sure you have the frontend submodule cloned. You can do this by running the following command:
+
+```bash
+git submodule --init --recursive
+```
+
 Then clone the repository and install the node dependencies
 
 ```bash
