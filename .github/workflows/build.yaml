@@ -164,7 +164,7 @@ jobs:
           releaseBody: "Fixes"
 
       - name: Upload linux binary
-        if: matrix.platform == 'ubuntu-22.04'
+        if: matrix.platform == 'ubuntu-20.04'
         uses: svenstaro/upload-release-action@v2
         with:
           tag: v${{ needs.update_version.outputs.version }}
@@ -172,7 +172,7 @@ jobs:
           file: src-tauri/target/release/music-assistant-companion
 
       - name: Upload squeezelite binary
-        if: matrix.platform == 'ubuntu-22.04'
+        if: matrix.platform == 'ubuntu-20.04'
         uses: svenstaro/upload-release-action@v2
         with:
           tag: v${{ needs.update_version.outputs.version }}
