@@ -10,18 +10,18 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [build-dependencies]
-tauri-build = { version = "1.5", features = [] }
+tauri-build = { version = "1.5.1", features = [] }
 
 [dependencies]
-tauri = { version = "1.5.2", features = [ "system-tray", "process-relaunch", "updater", "shell-sidecar", "shell-open", "process-command-api", "devtools"] }
+tauri = { version = "1.5.4", features = [ "system-tray", "process-relaunch", "updater", "shell-sidecar", "shell-open", "process-command-api", "devtools"] }
 tauri-plugin-websocket = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 tauri-plugin-single-instance = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 tauri-plugin-window-state = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 discord-rich-presence = "0.2.3"
-tungstenite = {version = "0.20.1", features = ["native-tls"] }
-url = "2.4.1"
-serde = { version = "1.0.190", features = ["derive"] }
-serde_json = "1.0.107"
+tungstenite = {version = "0.21.0", features = ["native-tls"] }
+url = "2.5.0"
+serde = { version = "1.0.194", features = ["derive"] }
+serde_json = "1.0.110"
 gethostname = "0.4.3"
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem

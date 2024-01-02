@@ -10,7 +10,7 @@
         "dev": "cd frontend/ && yarn dev"
     },
     "devDependencies": {
-        "@tauri-apps/cli": "^1.5.6"
+        "@tauri-apps/cli": "^1.5.9"
     },
     "dependencies": {
         "tauri-plugin-window-state-api": "https://github.com/tauri-apps/tauri-plugin-window-state#v1"
