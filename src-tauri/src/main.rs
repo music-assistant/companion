@@ -31,7 +31,22 @@ fn start_rpc(websocket: String) {
 }
 
 #[tauri::command]
-fn start_sqzlite(ip: String) {
+fn get_output_devices() -> Vec<String> {
+    // Get the output devices from squeezelite
+    let squeezelite_response: String = Command::new_sidecar("squeezelite")
+        .expect("Failed to create command")
+        .args(["-l"])
+        .output()
+        .expect("Failed to get output devices").stdout;
+    // Send the output devices to the frontend
+    return squeezelite_response.lines()
+        .filter(|line: &&str| !line.trim().is_empty() && !line.starts_with("Output devices:"))
+        .map(|line: &str| line.split_whitespace().next().unwrap().to_owned())
+        .collect();
+}
+
+#[tauri::command]
+fn start_sqzlite(ip: String, output_device: String) {
     // To prevent it from starting multiple times even if frontend gets reloaded
     SQUEEZELITE_STARTER.call_once(|| {
         // Start squeezelite in a new thread
@@ -48,6 +63,8 @@ fn start_sqzlite(ip: String) {
                     hostname
                         .to_str()
                         .expect("Couldnt convert hostname to &str -_-"),
+                    "-o",
+                    output_device.as_str(),
                 ])
                 .spawn()
                 .expect("Failed to start squeeselite");
@@ -126,7 +143,7 @@ fn main() {
             },
             _ => {}
         })
-        .invoke_handler(tauri::generate_handler![start_rpc, start_sqzlite])
+        .invoke_handler(tauri::generate_handler![start_rpc, start_sqzlite, get_output_devices])
         .system_tray(tray)
         .plugin(tauri_plugin_window_state::Builder::default().build())
         .plugin(tauri_plugin_websocket::init())
