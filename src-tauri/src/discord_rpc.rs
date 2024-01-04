@@ -42,8 +42,7 @@ pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
         // Parse the response to text
         let msg_text: &str = msg
             .to_text()
-            .expect("Coulnd't convert response to text")
-            .clone();
+            .expect("Coulnd't convert response to text");
         // Parse to json. Sometimes fails there wrapped in match thing
         let msg_json: serde_json::Value = match serde_json::from_str(&msg_text) {
             Ok(msg_json) => msg_json,
