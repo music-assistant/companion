@@ -10,6 +10,11 @@ on:
           - patch
           - minor
           - major
+      update_frontend:
+        description: 'Try to pull latest changes from frontend repository (companion branch)'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   update_version:
@@ -24,6 +29,13 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: true
+
+      - name: Update frontend
+        if: ${{ inputs.update_frontend == 'true' }}
+        run: |
+          cd frontend
+          git pull
+          cd ..
           
       - id: semver
         uses: SOLIDSoftworks/semver-tags@v1
