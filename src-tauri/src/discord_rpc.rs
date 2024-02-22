@@ -16,7 +16,7 @@ struct Song {
     album_image: String,
     end: i64,
     started: i64,
-    preview_url: String,
+    provider_url: String,
 }
 
 // Function for running the Discord rich presence
@@ -105,7 +105,7 @@ pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
                 .clone()
                 .to_string()
                 .replace('"', ""),
-            preview_url: metadata["preview"].clone().to_string().replace('"', ""),
+            provider_url: media_item["provider_mappings"][0]["url"].clone().to_string().replace('"', ""),
             artist_image: media_item["artists"][0]["metadata"]["images"][0]["path"]
                 .clone()
                 .to_string()
@@ -134,18 +134,18 @@ pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
             .end(current_song.end);
 
         // The buttons of the activity
-        let buttons: Vec<activity::Button<'_>> = if current_song.preview_url.contains("https://") {
+        let buttons: Vec<activity::Button<'_>> = if current_song.provider_url.contains("https://") {
             vec![
                 activity::Button::new(
-                    "Download",
-                    "https://github.com/music-assistant/music-assistant-desktop/releases/latest/",
+                    "Download companion",
+                    "https://music-assistant.io/companion-app/",
                 ),
-                activity::Button::new("Preview song!", &current_song.preview_url),
+                activity::Button::new("Open in browser", &current_song.provider_url),
             ]
         } else {
             vec![activity::Button::new(
-                "Download",
-                "https://github.com/music-assistant/music-assistant-desktop/releases/latest/",
+                "Download companion",
+                "https://music-assistant.io/companion-app/",
             )]
         };
 
