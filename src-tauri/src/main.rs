@@ -46,12 +46,18 @@ fn get_output_devices() -> Vec<String> {
 }
 
 #[tauri::command]
-fn start_sqzlite(ip: String, output_device: String) {
+fn start_sqzlite(ip: String, output_device: String, port: String) {
     // To prevent it from starting multiple times even if frontend gets reloaded
     SQUEEZELITE_STARTER.call_once(|| {
         // Start squeezelite in a new thread
         thread::spawn(move || {
             let hostname: std::ffi::OsString = gethostname();
+            let combined_hostname: String = hostname
+                .to_str()
+                .expect("Couldnt convert hostname to &str -_-")
+                .to_owned()
+                + ":"
+                + port.as_str();
             Command::new_sidecar("squeezelite")
                 .expect("Failed to create command")
                 .args([
@@ -60,7 +66,7 @@ fn start_sqzlite(ip: String, output_device: String) {
                     "-M",
                     "Companion",
                     "-n",
-                    hostname
+                    combined_hostname
                         .to_str()
                         .expect("Couldnt convert hostname to &str -_-"),
                     "-o",
