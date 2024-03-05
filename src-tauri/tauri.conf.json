@@ -45,9 +45,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "externalBin": [
-        "binaries/squeezelite"
-      ]
+      "externalBin": ["bin/squeezelite"]
     },
     "security": {
       "csp": null,
