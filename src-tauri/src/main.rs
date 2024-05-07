@@ -52,21 +52,21 @@ fn start_sqzlite(ip: String, output_device: String, port: String) {
         // Start squeezelite in a new thread
         thread::spawn(move || {
             let hostname: std::ffi::OsString = gethostname();
-            let combined_hostname: String = hostname
-                .to_str()
-                .expect("Couldnt convert hostname to &str -_-")
+            let combined_ip: String = ip
+                .as_str()
                 .to_owned()
                 + ":"
                 + port.as_str();
+            println!("Starting squeezelite with ip: {}, output device: {}, port: {}", ip, output_device, port);
             Command::new_sidecar("squeezelite")
                 .expect("Failed to create command")
                 .args([
                     "-s",
-                    ip.as_str(),
+                    combined_ip.as_str(),
                     "-M",
                     "Companion",
                     "-n",
-                    combined_hostname.as_str(),
+                    hostname.to_str().expect("Couldnt convert hostname to &str -_-"),
                     "-o",
                     output_device.as_str(),
                 ])
