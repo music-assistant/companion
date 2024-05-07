@@ -66,9 +66,7 @@ fn start_sqzlite(ip: String, output_device: String, port: String) {
                     "-M",
                     "Companion",
                     "-n",
-                    combined_hostname
-                        .to_str()
-                        .expect("Couldnt convert hostname to &str -_-"),
+                    combined_hostname.as_str(),
                     "-o",
                     output_device.as_str(),
                 ])
