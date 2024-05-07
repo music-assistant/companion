@@ -1,6 +1,6 @@
 [package]
 name = "music-assistant-companion"
-version = "0.0.34"
+version = "0.0.35"
 description = "Music Assistant Companion App"
 authors = ["The Music Assistant Team"]
 license = "Apache-2.0"
