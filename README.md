@@ -26,10 +26,10 @@
     <br />
     <br />
     <b>Download for </b>
-    macOS (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.33/music-assistant-companion_0.0.33_aarch64.dmg">Apple Silicon</a> |
-    <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.33/music-assistant-companion_0.0.33_x64.dmg">Intel</a>) ·
-		<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.33/music-assistant-companion_0.0.33_x64_en-US.msi">Windows</a> ·
-    Linux (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.33/music-assistant-companion_0.0.33_amd64.deb">Debian</a> | <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.33/music-assistant-companion_0.0.33_amd64.AppImage">Other</a>)
+    macOS (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.35/music-assistant-companion_0.0.35_aarch64.dmg">Apple Silicon</a> |
+    <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.35/music-assistant-companion_0.0.35_x64.dmg">Intel</a>) ·
+		<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.35/music-assistant-companion_0.0.35_x64_en-US.msi">Windows</a> ·
+    Linux (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.35/music-assistant-companion_0.0.35_amd64.deb">Debian</a> | <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.35/music-assistant-companion_0.0.35_amd64.AppImage">Other</a>)
     <br />
   </p>
 </p>
