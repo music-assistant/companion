@@ -35,13 +35,13 @@
 </p>
 
 > [!IMPORTANT]
-> This is still in very early alpha. Bugs *will* be present. Please help finding them, you can report any bugs on the [Discord server](https://discord.gg/kaVm8hGpne) or in the [repo issues](https://github.com/music-assistant/music-assistant-desktop/issues)
+> This is still in very early alpha. Bugs _will_ be present. Please help finding them, you can report any bugs on the [Discord server](https://discord.gg/kaVm8hGpne) or in the [repo issues](https://github.com/music-assistant/music-assistant-desktop/issues)
 
 ## Setup
 
 When starting the app for the first time you are asked about some information about the Music Assistant Server.
 
-![image](https://github.com/Un10ck3d/massapp/assets/74015378/cb97aa3e-12d8-4992-bfc6-0b58cedb81da)
+![image](https://github.com/music-assistant/companion/assets/74015378/cb97aa3e-12d8-4992-bfc6-0b58cedb81da)
 
 > [!IMPORTANT]
 > The app requires that the webserver is exposed. You can set that in the settings:
@@ -59,7 +59,7 @@ Like the Spotify app, the Music Assistant app can do Discord Rich Presence.
 
 Example of Discord Rich Presence:
 
-![Example of Discord Rich Presence](https://github.com/Un10ck3d/massapp/assets/74015378/8de18bac-b963-4aba-bb61-5730b41759a9)
+![Example of Discord Rich Presence](https://github.com/music-assistant/companion/assets/74015378/8de18bac-b963-4aba-bb61-5730b41759a9)
 
 ## Installation
 
@@ -71,22 +71,22 @@ You can install it with yay: `yay music-assistant-desktop-bin`
 
 ### Debian (And debian based distrobutions)
 
-You can download the .deb from the [releases](https://github.com/Un10ck3d/massapp/releases/latest/).
+You can download the .deb from the [releases](https://github.com/music-assistant/companion/releases/latest/).
 
 ### All the other linux distros
 
-You can download the AppImage from the [releases](https://github.com/Un10ck3d/massapp/releases/latest/).
+You can download the AppImage from the [releases](https://github.com/music-assistant/companion/releases/latest/).
 
 ### MacOS
 
-You can download the .dmg from the [releases](https://github.com/Un10ck3d/massapp/releases/latest/).
+You can download the .dmg from the [releases](https://github.com/music-assistant/companion/releases/latest/).
 
 > [!IMPORTANT]
->The app is unsigned since we currently dont want to spend 90 USD/yr for an Apple Developer account. Therefore it will warn you about an untrusted developer/app downloaded from internet. To open it follow [these instructions](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac)
+> The app is unsigned since we currently dont want to spend 90 USD/yr for an Apple Developer account. Therefore it will warn you about an untrusted developer/app downloaded from internet. To open it follow [these instructions](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac)
 
 ### Windows
 
-You can download the .msi installer from the [releases](https://github.com/Un10ck3d/massapp/releases/latest/).
+You can download the .msi installer from the [releases](https://github.com/music-assistant/companion/releases/latest/).
 
 ### From source
 
