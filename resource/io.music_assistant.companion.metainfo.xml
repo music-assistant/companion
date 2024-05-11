@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.music_assistant.companion</id>
+
+  <name>Music Assistant Companion</name>
+  <summary>Hassle free streaming of your favorite media to your media players</summary>
+
+  <metadata_license>MIT</metadata_license>
+  <project_license>Apache-2.0</project_license>
+
+  <developer id="tld.vendor">
+    <name>Music Assistant Team</name>
+  </developer>
+
+  <url type="homepage">https://music-assistant.io/</url>
+  <url type="bugtracker">https://github.com/music-assistant/hass-music-assistant/issues</url>
+  <url type="donation">https://github.com/sponsors/music-assistant</url>
+  <url type="contact">https://discord.com/invite/kaVm8hGpne</url>
+  <url type="faq">https://music-assistant.io/faq/how-to/</url>
+  <url type="translate">https://music-assistant.io/help/lokalise/</url>
+  <url type="vcs-browser">https://github.com/music-assistant/companion</url>
+
+  <content_rating type="oars-1.1" />
+
+  <branding>
+    <color type="primary" scheme_preference="light">#ffffff</color>
+    <color type="primary" scheme_preference="dark">#121212</color>
+  </branding>
+
+  <categories>
+    <category>Audio</category>
+    <category>Music</category>
+  </categories>
+
+  <icon type="stock">io.music-assistant.companion</icon>
+  <icon type="remote">https://media.githubusercontent.com/music-assistant/companion/main/resource/app_icon.svg</icon>
+
+  <description>
+    <p>Music Assistant is a free, opensource Media library manager that connects to your streaming services and a wide range of connected speakers. 
+    The server is the beating heart, the core of Music Assistant and must run on an always-on device like a Raspberry Pi, a NAS or an Intel NUC or alike. </p>
+    <ul>
+      <li>Acces the Music Assistant UI.</li>
+      <li>Play music to your PC from Music Assistant.</li>
+      <li>Discord Rich Presence (can be disabled)</li>
+    </ul>
+    <p>Note: To connect to your Music Assistant server you must have the webserver exposed. And to allow playback to the companion app you must also add the Slimproto provider in the Music Assistant settings. Check the GitHub for instructions.</p>
+  </description>
+
+  <launchable type="desktop-id">io.music-assistant.companion</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Home view screenshot</caption>
+      <image>
+        https://media.githubusercontent.com/music-assistant/companion/main/resource/screenshots/home-view.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Player view screenshot</caption>
+      <image>
+        https://media.githubusercontent.com/music-assistant/companion/main/resource/screenshots/player-view.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Settings view screenshot</caption>
+      <image>
+        https://media.githubusercontent.com/music-assistant/companion/main/resource/screenshots/settings-view.png</image>
+    </screenshot>
+  </screenshots>
+
+  <releases>
+    <release version="0.0.36" date="2024-05-07">
+      <description>
+        <p>First release on Flathub</p>
+        <ul>
+          <li>Flatpak support</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.0.35" date="2024-05-07"/>
+    <release version="0.0.34" date="2024-05-07"/>
+    <release version="0.0.33" date="2024-02-22"/>
+    <release version="0.0.32" date="2024-02-22"/>
+    <release version="0.0.31" date="2024-01-21"/>
+    <release version="0.0.30" date="2024-01-04"/>
+    <release version="0.0.29" date="2024-01-04"/>
+    <release version="0.0.28" date="2024-01-04"/>
+    <release version="0.0.27" date="2024-01-04"/>
+    <release version="0.0.26" date="2024-01-02"/>
+    <release version="0.0.25" date="2023-12-09"/>
+    <release version="0.0.24" date="2023-12-07"/>
+    <release version="0.0.23" date="2023-11-15"/>
+    <release version="0.0.22" date="2023-10-21"/>
+    <release version="0.0.21" date="2023-10-09"/>
+    <release version="0.0.20" date="2023-10-02">
+        <description>
+            <p>Single Instance</p>
+            <ul>
+                <li>The companion will now only allow running a single instance at a time. This was causing a few problems earlier.</li>
+            </ul>
+        </description>
+    </release>
+    <release version="0.0.19" date="2023-10-01">
+        <description>
+            <p>Add tray</p>
+            <ul>
+                <li>Refined client settings</li>
+                <li>Added system tray. It now closes to tray by default to prevent it from stopping the music even if the frontend isnt open</li>
+            </ul>
+        </description>
+    </release>
+    <release version="0.0.18" date="2023-10-01">
+        <description>
+            <p>Fixes</p>
+            <ul>
+                <li>Stop using window api's to allow 10.13 mac support.</li>
+                <li>Use tauri-plugin-websocket instead of websocket-ts</li>
+            </ul>
+        </description>
+    </release>
+    <release version="0.0.17" date="2023-09-29">
+        <description>
+            <p>Fixes</p>
+            <ul>
+                <li>Bump tungstenite from 0.19.0 to 0.20.1</li>
+                <li>Updates tauri to 1.5</li>
+                <li>Splits client config into seperate tab in settings</li>
+                <li>Fixes popups when trying to authenticate providers</li>
+                <li>Loading screen on startup</li>
+                <li>Rename to Music Assistant Companion</li>
+            </ul>
+        </description>
+    </release>
+    <release version="0.0.16" date="2023-08-20"/>
+    <release version="0.0.15" date="2023-08-20"/>
+    <release version="0.0.14" date="2023-08-16"/>
+    <release version="0.0.13" date="2023-08-15"/>
+    <release version="0.0.12" date="2023-08-13"/>
+    <release version="0.0.11" date="2023-08-10"/>
+    <release version="0.0.10" date="2023-08-10"/>
+    <release version="0.0.9" date="2023-08-05"/>
+    <release version="0.0.8" date="2023-07-29"/>
+    <release version="0.0.7" date="2023-07-29"/>
+    <release version="0.0.6" date="2023-07-29"/>
+    <release version="0.0.5" date="2023-07-29"/>
+    <release version="0.0.4" date="2023-07-29"/>
+    <release version="0.0.3" date="2023-07-28"/>
+    <release version="0.0.2" date="2023-07-28"/>
+    <release version="0.0.1" date="2023-07-28">
+      <description>
+        <p>Initial release</p>
+      </description>
+    </release>
+  </releases>
+
+</component>
