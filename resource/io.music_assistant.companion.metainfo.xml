@@ -33,7 +33,7 @@
   </categories>
 
   <icon type="stock">io.music-assistant.companion</icon>
-  <icon type="remote">https://media.githubusercontent.com/music-assistant/companion/main/resource/app_icon.svg</icon>
+  <icon type="remote">https://raw.githubusercontent.com/music-assistant/companion/main/resource/app_icon.svg</icon>
 
   <description>
     <p>Music Assistant is a free, opensource Media library manager that connects to your streaming services and a wide range of connected speakers. 
@@ -51,17 +51,17 @@
     <screenshot type="default">
       <caption>Home view screenshot</caption>
       <image>
-        https://media.githubusercontent.com/music-assistant/companion/main/resource/screenshots/home-view.png</image>
+        https://raw.githubusercontent.com/music-assistant/companion/main/resource/screenshots/home-view.png</image>
     </screenshot>
     <screenshot>
       <caption>Player view screenshot</caption>
       <image>
-        https://media.githubusercontent.com/music-assistant/companion/main/resource/screenshots/player-view.png</image>
+        https://raw.githubusercontent.com/music-assistant/companion/main/resource/screenshots/player-view.png</image>
     </screenshot>
     <screenshot>
       <caption>Settings view screenshot</caption>
       <image>
-        https://media.githubusercontent.com/music-assistant/companion/main/resource/screenshots/settings-view.png</image>
+        https://raw.githubusercontent.com/music-assistant/companion/main/resource/screenshots/settings-view.png</image>
     </screenshot>
   </screenshots>
 
