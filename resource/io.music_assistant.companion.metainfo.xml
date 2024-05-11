@@ -33,7 +33,7 @@
   </categories>
 
   <icon type="stock">io.music-assistant.companion</icon>
-  <icon type="remote">https://raw.githubusercontent.com/music-assistant/companion/main/resource/app_icon.svg</icon>
+  <icon type="remote">https://raw.githubusercontent.com/music-assistant/companion/main/resource/app_icon.png</icon>
 
   <description>
     <p>Music Assistant is a free, opensource Media library manager that connects to your streaming services and a wide range of connected speakers. 
