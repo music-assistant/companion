@@ -63,6 +63,16 @@ Example of Discord Rich Presence:
 
 ## Installation
 
+### Windows
+
+You can download the .msi installer from the [releases](https://github.com/music-assistant/companion/releases/latest/).
+
+### MacOS
+
+You can download the .dmg from the [releases](https://github.com/music-assistant/companion/releases/latest/).
+
+Or you can download it using homebrew: `brew install music-assistant/tap/companion`
+
 ### Arch Linux
 
 This app is on the arch aur with the name `music-assistant-desktop` or `music-assistant-desktop-bin` for just the binary
@@ -76,16 +86,6 @@ You can download the .deb from the [releases](https://github.com/music-assistant
 ### All the other linux distros
 
 You can download the AppImage from the [releases](https://github.com/music-assistant/companion/releases/latest/).
-
-### MacOS
-
-You can download the .dmg from the [releases](https://github.com/music-assistant/companion/releases/latest/).
-
-Or you can download it using homebrew: `brew install music-assistant/tap/companion`
-
-### Windows
-
-You can download the .msi installer from the [releases](https://github.com/music-assistant/companion/releases/latest/).
 
 ### From source
 
