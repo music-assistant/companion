@@ -172,7 +172,7 @@ jobs:
         uses: actions/upload-artifact@v4.3.3
         if: always() && matrix.platform == 'macos-latest'
         with:
-          path: src-tauri/target/aarch64-apple-darwin/release/bundle/macos/Music\ Assistant\ Companion.zip
+          path: src-tauri/target/aarch64-apple-darwin/release/bundle/macos/Music Assistant Companion.app
 
       - name: Build the app (Mac)
         if: matrix.platform == 'macos-12'
