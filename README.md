@@ -26,10 +26,10 @@
     <br />
     <br />
     <b>Download for </b>
-    macOS (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.35/music-assistant-companion_0.0.35_aarch64.dmg">Apple Silicon</a> |
-    <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.35/music-assistant-companion_0.0.35_x64.dmg">Intel</a>) ·
-		<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.35/music-assistant-companion_0.0.35_x64_en-US.msi">Windows</a> ·
-    Linux (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.35/music-assistant-companion_0.0.35_amd64.deb">Debian</a> | <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.35/music-assistant-companion_0.0.35_amd64.AppImage">Other</a>)
+    macOS (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/music-assistant-companion_0.0.45_aarch64.dmg">Apple Silicon</a> |
+    <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/music-assistant-companion_0.0.45_x64.dmg">Intel</a>) ·
+		<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/music-assistant-companion_0.0.45_x64_en-US.msi">Windows</a> ·
+    Linux (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/music-assistant-companion_0.0.45_amd64.deb">Debian</a> | <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/music-assistant-companion_0.0.45_amd64.AppImage">Other</a>)
     <br />
   </p>
 </p>
@@ -81,8 +81,7 @@ You can download the AppImage from the [releases](https://github.com/music-assis
 
 You can download the .dmg from the [releases](https://github.com/music-assistant/companion/releases/latest/).
 
-> [!IMPORTANT]
-> The app is unsigned since we currently dont want to spend 90 USD/yr for an Apple Developer account. Therefore it will warn you about an untrusted developer/app downloaded from internet. To open it follow [these instructions](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac)
+Or you can download it using homebrew: `brew install music-assistant/tap/companion`
 
 ### Windows
 
