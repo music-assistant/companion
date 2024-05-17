@@ -168,11 +168,27 @@ jobs:
           releaseName: "Music Assistant Companion App ${{ needs.update_version.outputs.version }}"
           releaseBody: "Fixes"
 
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4.3.3
-        if: always() && matrix.platform == 'macos-latest'
-        with:
-          path: src-tauri/target/aarch64-apple-darwin/release/bundle/macos/Music Assistant Companion.app
+      - name: Upload app to app store
+        if: matrix.platform == 'macos-latest' && "1" == "2"
+        run: |
+          unset APPLE_SIGNING_IDENTITY
+          unset APPLE_CERTIFICATE
+          sign_app="3rd Party Mac Developer Application: COMPANY_NAME (TEAM_ID)"
+          sign_install="3rd Party Mac Developer Installer: COMPANY_NAME (TEAM_ID)"
+          profile="src-tauri/Mac_App_Distribution.provisionprofile"
+          
+          app_path="src-tauri/target/aarch64-apple-darwin/release/bundle/macos/Music Assistant Companion.app"
+          build_name="src-tauri/target/aarch64-apple-darwin/release/bundle/macos/Music Assistant Companion.pkg"
+          cp_dir="src-tauri/target/aarch64-apple-darwin/release/bundle/macos/Music Assistant Companion.app/Contents/embedded.provisionprofile"
+          entitlements="src-tauri/Entitlements.plist"
+          
+          cp "${profile}" "${cp_dir}"
+          
+          codesign --deep --force -s "${sign_app}" --entitlements ${entitlements} "${app_path}"
+          
+          productbuild --component "${app_path}" /Applications/ --sign "${sign_install}" "${build_name}"
+
+          xcrun altool --upload-app -f file -t platform -u username [-p password]
 
       - name: Build the app (Mac)
         if: matrix.platform == 'macos-12'
