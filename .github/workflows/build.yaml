@@ -168,6 +168,12 @@ jobs:
           releaseName: "Music Assistant Companion App ${{ needs.update_version.outputs.version }}"
           releaseBody: "Fixes"
 
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.3
+        if: always() && matrix.platform == 'macos-latest'
+        with:
+          path: "Music Assistant Companion.zip"
+
       - name: Build the app (Mac)
         if: matrix.platform == 'macos-12'
         uses: tauri-apps/tauri-action@v0
