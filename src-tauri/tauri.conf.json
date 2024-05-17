@@ -47,7 +47,10 @@
       ],
       "externalBin": [
         "bin/squeezelite"
-      ]
+      ],
+      "macOS": {
+        "signingIdentity": "955D523MK8"
+      }
     },
     "security": {
       "csp": null,
