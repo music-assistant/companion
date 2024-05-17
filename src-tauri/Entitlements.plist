@@ -4,5 +4,19 @@
 <dict>
     <key>com.apple.developer.device-information.user-assigned-device-name</key>
     <true/>
+    <key>com.apple.security.app-sandbox</key>
+    <true/>
+    <key>com.apple.security.network.client</key>
+    <true/>
+    <key>com.apple.security.network.server</key>
+    <true/>
+    <key>com.apple.security.files.user-selected.read-write</key>
+    <true/>
+    <key>com.apple.security.files.downloads.read-write</key>
+    <true/>
+    <key>com.apple.application-identifier</key>
+    <string>955D523MK8.io.music-assistant.companion</string>
+    <key>com.apple.developer.team-identifier</key>
+    <string>955D523MK8</string>
 </dict>
 </plist>
