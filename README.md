@@ -26,9 +26,9 @@
     <br />
     <br />
     <b>Download for </b>
-    macOS (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/music-assistant-companion_0.0.45_aarch64.dmg">Apple Silicon</a> |
-    <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/music-assistant-companion_0.0.45_x64.dmg">Intel</a>) ·
-		<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/music-assistant-companion_0.0.45_x64_en-US.msi">Windows</a> ·
+    macOS (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/Music.Assistant.Companion_0.0.45_aarch64.dmg">Apple Silicon</a> |
+    <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/Music.Assistant.Companion_0.0.45_x64.dmg">Intel</a>) ·
+		<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/Music.Assistant.Companion_0.0.45_x64_en-US.msi">Windows</a> ·
     Linux (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/music-assistant-companion_0.0.45_amd64.deb">Debian</a> | <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/music-assistant-companion_0.0.45_amd64.AppImage">Other</a>)
     <br />
   </p>
