@@ -51,7 +51,9 @@ When starting the app for the first time you are asked about some information ab
 
 ### [Squeezelite](https://en.wikipedia.org/wiki/Squeezelite)
 
-Squeezelite comes embedded into the application. This allows you playing music to your computer. The player name will be the same as your computer name. You can change the name in Music Assistant settings. You can also toggle if you wish to enable squeezelite at all.
+Squeezelite comes embedded in the application. This allows playback of music to your computer. The player name will be the same as your computer name. You can change the name in Music Assistant settings. You can also toggle if you wish to enable squeezelite at all.
+
+To allow playback to the companion app you have to enable the slimproto provider in the Music Assistant settings.
 
 ### [Discord Rich Presence](https://discord.com/developers/docs/rich-presence/how-to#so-what-is-it)
 
@@ -111,3 +113,4 @@ $ cd ..
 And then build the app
 
 `$ npx tauri build`
+
