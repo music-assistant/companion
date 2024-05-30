@@ -40,9 +40,7 @@ pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
         let msg: tungstenite::Message = socket.read().expect("msg");
 
         // Parse the response to text
-        let msg_text: &str = msg
-            .to_text()
-            .expect("Coulnd't convert response to text");
+        let msg_text: &str = msg.to_text().expect("Coulnd't convert response to text");
         // Parse to json. Sometimes fails there wrapped in match thing
         let msg_json: serde_json::Value = match serde_json::from_str(&msg_text) {
             Ok(msg_json) => msg_json,
@@ -105,7 +103,10 @@ pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
                 .clone()
                 .to_string()
                 .replace('"', ""),
-            provider_url: media_item["provider_mappings"][0]["url"].clone().to_string().replace('"', ""),
+            provider_url: media_item["provider_mappings"][0]["url"]
+                .clone()
+                .to_string()
+                .replace('"', ""),
             artist_image: media_item["artists"][0]["metadata"]["images"][0]["path"]
                 .clone()
                 .to_string()
