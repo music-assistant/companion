@@ -101,7 +101,6 @@ pub fn run() {
             get_output_devices
         ])
         .plugin(tauri_plugin_window_state::Builder::default().build())
-        .plugin(tauri_plugin_websocket::init())
         .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_single_instance::init(|app, argv, cwd| {
             println!("{}, {argv:?}, {cwd}", app.package_info().name);

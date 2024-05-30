@@ -14,7 +14,6 @@ tauri-build = { version = "2.0.0-beta", features = [] }
 
 [dependencies]
 tauri = { version = "2.0.0-beta", features = [ "devtools", "tray-icon"] }
-tauri-plugin-websocket = "2.0.0-beta"
 tauri-plugin-single-instance = "2.0.0-beta"
 tauri-plugin-window-state = "2.0.0-beta"
 discord-rich-presence = "0.2.4"
