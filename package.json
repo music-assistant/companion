@@ -1,6 +1,6 @@
 {
     "name": "music-assistant-companion",
-    "version": "0.0.45",
+    "version": "0.0.46",
     "type": "module",
     "description": "The Music Assistant Companion app developed in Tauri.",
     "license": "Apache-2.0",
