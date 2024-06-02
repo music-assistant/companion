@@ -22,11 +22,11 @@ url = "2.5.0"
 serde = { version = "1.0.203", features = ["derive"] }
 serde_json = "1.0.117"
 gethostname = "0.4.3"
-tauri-plugin-shell = "2.0.0-beta.6"
-tauri-plugin-process = "2.0.0-beta.5"
+tauri-plugin-shell = "2.0.0-beta"
+tauri-plugin-process = "2.0.0-beta"
 
 [target."cfg(not(any(target_os = \"android\", target_os = \"ios\")))".dependencies]
-tauri-plugin-updater = "2.0.0-beta.6"
+tauri-plugin-updater = "2.0.0-beta"
 
 [dependencies.openssl]
 version = "=0.10.64"
