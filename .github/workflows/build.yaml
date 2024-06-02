@@ -230,12 +230,12 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           tag: v${{ needs.update_version.outputs.version }}
-          file: src-tauri/target/release/bundle/deb/music-assistant-companion_${{ needs.update_version.outputs.version }}_amd64.deb
+          file: src-tauri/target/release/bundle/deb/Music Assistant Companion_${{ needs.update_version.outputs.version }}_amd64.deb
 
       - name: Upload appimage build
         if: matrix.platform == 'ubuntu-24.04'
         uses: svenstaro/upload-release-action@v2
         with:
           tag: v${{ needs.update_version.outputs.version }}
-          file: src-tauri/target/release/bundle/appimage/music-assistant-companion_${{ needs.update_version.outputs.version }}_amd64.AppImage
+          file: src-tauri/target/release/bundle/appimage/Music Assistant Companion_${{ needs.update_version.outputs.version }}_amd64.AppImage
 
