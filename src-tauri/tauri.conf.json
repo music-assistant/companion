@@ -23,7 +23,7 @@
     ]
   },
   "productName": "Music Assistant Companion",
-  "version": "0.0.57",
+  "version": "0.0.58",
   "identifier": "io.music-assistant.companion",
   "plugins": {
     "updater": {
