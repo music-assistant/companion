@@ -72,7 +72,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-latest, ubuntu-18.04, windows-latest, macos-12]
+        platform: [macos-latest, ubuntu-20.04, windows-latest, macos-12]
 
     runs-on: ${{ matrix.platform }}
 
@@ -87,7 +87,7 @@ jobs:
           git pull
 
       - name: Install dependencies (Linux)
-        if: matrix.platform == 'ubuntu-18.04'
+        if: matrix.platform == 'ubuntu-20.04'
         run: |
           sudo apt-get update
           sudo apt remove needrestart #refer: https://github.com/actions/runner-images/issues/9937
@@ -124,7 +124,7 @@ jobs:
         run: yarn install && cd $env:GITHUB_WORKSPACE/frontend/ && yarn install && cd $env:GITHUB_WORKSPACE # Change this to npm, yarn or pnpm.
 
       - name: Build the app (Linux)
-        if: matrix.platform == 'ubuntu-18.04'
+        if: matrix.platform == 'ubuntu-20.04'
         uses: tauri-apps/tauri-action@v0
 
         env:
@@ -211,7 +211,7 @@ jobs:
           releaseBody: "Fixes"
 
       - name: Upload linux binary
-        if: matrix.platform == 'ubuntu-18.04'
+        if: matrix.platform == 'ubuntu-20.04'
         uses: svenstaro/upload-release-action@v2
         with:
           tag: v${{ needs.update_version.outputs.version }}
@@ -219,21 +219,21 @@ jobs:
           file: src-tauri/target/release/music-assistant-companion
 
       - name: Upload squeezelite binary
-        if: matrix.platform == 'ubuntu-18.04'
+        if: matrix.platform == 'ubuntu-20.04'
         uses: svenstaro/upload-release-action@v2
         with:
           tag: v${{ needs.update_version.outputs.version }}
           file: src-tauri/bin/squeezelite-x86_64-unknown-linux-gnu
 
       - name: Upload deb build
-        if: matrix.platform == 'ubuntu-18.04'
+        if: matrix.platform == 'ubuntu-20.04'
         uses: svenstaro/upload-release-action@v2
         with:
           tag: v${{ needs.update_version.outputs.version }}
           file: src-tauri/target/release/bundle/deb/Music Assistant Companion_${{ needs.update_version.outputs.version }}_amd64.deb
 
       - name: Upload appimage build
-        if: matrix.platform == 'ubuntu-18.04'
+        if: matrix.platform == 'ubuntu-20.04'
         uses: svenstaro/upload-release-action@v2
         with:
           tag: v${{ needs.update_version.outputs.version }}
