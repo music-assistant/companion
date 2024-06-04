@@ -223,18 +223,3 @@ jobs:
         with:
           tag: v${{ needs.update_version.outputs.version }}
           file: src-tauri/bin/squeezelite-x86_64-unknown-linux-gnu
-
-      - name: Upload deb build
-        if: matrix.platform == 'ubuntu-22.04'
-        uses: svenstaro/upload-release-action@v2
-        with:
-          tag: v${{ needs.update_version.outputs.version }}
-          file: src-tauri/target/release/bundle/deb/Music Assistant Companion_${{ needs.update_version.outputs.version }}_amd64.deb
-
-      - name: Upload appimage build
-        if: matrix.platform == 'ubuntu-22.04'
-        uses: svenstaro/upload-release-action@v2
-        with:
-          tag: v${{ needs.update_version.outputs.version }}
-          file: src-tauri/target/release/bundle/appimage/Music Assistant Companion_${{ needs.update_version.outputs.version }}_amd64.AppImage
-
