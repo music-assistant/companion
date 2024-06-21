@@ -114,3 +114,6 @@ And then build the app
 
 `$ npx tauri build`
 
+# Contributing
+
+Check the CONTRIBUTING.md file.
