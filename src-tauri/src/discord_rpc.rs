@@ -37,7 +37,7 @@ pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
     // Continuously update the status
     loop {
         // Read the WebSocket message
-        let msg = socket.read_message().expect("Error reading message");
+        let msg = socket.read().expect("Error reading message");
 
         // Parse the response to text
         let msg_text = msg.to_text().expect("Couldn't convert response to text");
