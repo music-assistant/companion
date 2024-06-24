@@ -21,137 +21,103 @@ struct Song {
 
 // Function for running the Discord rich presence
 pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
-    // Create the discord rpc client
+    // Create the Discord RPC client
     let mut client: DiscordIpcClient =
-        DiscordIpcClient::new(CLIENT_ID).expect("Coulnd't create the discord client!");
+        DiscordIpcClient::new(CLIENT_ID).expect("Couldn't create the Discord client!");
 
-    // Connect to the discord rich presence socket
+    // Connect to the Discord Rich Presence socket
     client
         .connect()
-        .expect("Failure while connecting to discord rpc socket");
+        .expect("Failure while connecting to Discord RPC socket");
 
     // Connect to MASS socket
-    let (mut socket, _response) = connect(Url::parse(mass_ws.as_str()).unwrap())
-        .expect("Can't connect to mass socket.. Is it running? Is the port 8095 open?");
+    let (mut socket, _response) = connect(Url::parse(&mass_ws).unwrap().as_str())
+        .expect("Can't connect to MASS socket.. Is it running? Is the port 8095 open?");
 
-    // Continuously update the thing
+    // Continuously update the status
     loop {
-        // Read the websocket
-        let msg: tungstenite::Message = socket.read().expect("msg");
+        // Read the WebSocket message
+        let msg = socket.read_message().expect("Error reading message");
 
         // Parse the response to text
-        let msg_text: &str = msg.to_text().expect("Coulnd't convert response to text");
-        // Parse to json. Sometimes fails there wrapped in match thing
-        let msg_json: serde_json::Value = match serde_json::from_str(&msg_text) {
-            Ok(msg_json) => msg_json,
+        let msg_text = msg.to_text().expect("Couldn't convert response to text");
+
+        // Parse to JSON. If it fails, skip this iteration
+        let msg_json: serde_json::Value = match serde_json::from_str(msg_text) {
+            Ok(json) => json,
             Err(_) => continue,
         };
 
-        // If it isnt a queue update we ignore it
-        if !(msg_json["event"] == "queue_updated") {
+        // If it isn't a queue update, ignore it
+        if msg_json["event"] != "queue_updated" {
             continue;
         }
 
-        let displayname: String = msg_json["data"]["display_name"]
-            .to_string()
-            .replace('"', "");
-        let hostname: String = String::from(hostname.to_str().expect("Couldnt convert to &str"));
+        let displayname = msg_json["data"]["display_name"].as_str().unwrap_or("").to_string();
+        let hostname = hostname.to_str().unwrap_or("").to_string();
 
-        // If it isnt the right player we also ignore it
+        // If it isn't the right player, ignore it
         if hostname != displayname {
             continue;
         }
 
-        // Stop discord rpc if not playing
-        if msg_json["data"]["state"].to_string().replace('"', "") != "playing" {
-            client.clear_activity().expect("Couldnt clear activity");
+        // Stop Discord RPC if not playing
+        if msg_json["data"]["state"].as_str().unwrap_or("") != "playing" {
+            client.clear_activity().expect("Couldn't clear activity");
             continue;
         }
 
-        // Get the basic paths so to say
-        let current_item: serde_json::Value = msg_json["data"]["current_item"].clone();
-        let media_item: serde_json::Value = current_item["media_item"].clone();
-        let metadata: serde_json::Value = media_item["metadata"].clone();
+        // Get the current item
+        let current_item = &msg_json["data"]["current_item"];
+        let media_item = &current_item["media_item"];
+        let metadata = &media_item["metadata"];
 
-        // If no track is playing clear discord actitivity
-        if current_item.to_string() == "null" {
-            client.clear_activity().expect("Couldnt clear activity");
+        // If no track is playing, clear Discord activity
+        if current_item.is_null() {
+            client.clear_activity().expect("Couldn't clear activity");
             continue;
         }
 
-        // Get duration things
-        let already_played: i64 = msg_json["data"]["elapsed_time"]
-            .clone()
-            .as_f64()
-            .unwrap_or(0.0)
-            .round() as i64
-            * 1000;
-        let duration: i64 = media_item["duration"].as_i64().unwrap() * 1000;
+        // Get duration details
+        let already_played = (msg_json["data"]["elapsed_time"].as_f64().unwrap_or(0.0).round() as i64) * 1000;
+        let duration = media_item["duration"].as_i64().unwrap_or(0) * 1000;
 
         // Create the current song struct
-        let current_song: Song = Song {
-            name: media_item["name"].clone().to_string().replace('"', ""),
-            album: media_item["album"]["name"]
-                .clone()
-                .to_string()
-                .replace('"', ""),
-            album_image: metadata["images"][0]["path"]
-                .clone()
-                .to_string()
-                .replace('"', ""),
-            artist: media_item["artists"][0]["name"]
-                .clone()
-                .to_string()
-                .replace('"', ""),
-            provider_url: media_item["provider_mappings"][0]["url"]
-                .clone()
-                .to_string()
-                .replace('"', ""),
-            artist_image: media_item["artists"][0]["metadata"]["images"][0]["path"]
-                .clone()
-                .to_string()
-                .replace('"', ""),
-            started: SystemTime::now()
-                .duration_since(UNIX_EPOCH)
-                .expect("whoops")
-                .as_millis() as i64,
-            end: SystemTime::now()
-                .duration_since(UNIX_EPOCH)
-                .expect("whoops")
-                .as_millis() as i64
-                + (duration - already_played),
+        let current_song = Song {
+            name: media_item["name"].as_str().unwrap_or("").to_string(),
+            album: media_item["album"]["name"].as_str().unwrap_or("").to_string(),
+            album_image: metadata["images"][0]["path"].as_str().unwrap_or("").to_string(),
+            artist: media_item["artists"][0]["name"].as_str().unwrap_or("").to_string(),
+            provider_url: media_item["provider_mappings"][0]["url"].as_str().unwrap_or("").to_string(),
+            artist_image: media_item["artists"][0]["metadata"]["images"][0]["path"].as_str().unwrap_or("").to_string(),
+            started: SystemTime::now().duration_since(UNIX_EPOCH).expect("Time error").as_millis() as i64,
+            end: SystemTime::now().duration_since(UNIX_EPOCH).expect("Time error").as_millis() as i64 + (duration - already_played),
         };
 
         // The assets of the activity
-        let assets: activity::Assets<'_> = activity::Assets::new()
-            .small_image(&current_song.artist_image.as_str())
-            .small_text(&current_song.artist.as_str())
-            .large_image(&current_song.album_image.as_str())
-            .large_text(&current_song.album.as_str());
+        let assets = activity::Assets::new()
+            .small_image(&current_song.artist_image)
+            .small_text(&current_song.artist)
+            .large_image(&current_song.album_image)
+            .large_text(&current_song.album);
 
         // The timestamps of the activity
-        let timestamps: activity::Timestamps = activity::Timestamps::new()
+        let timestamps = activity::Timestamps::new()
             .start(current_song.started)
             .end(current_song.end);
 
         // The buttons of the activity
-        let buttons: Vec<activity::Button<'_>> = if current_song.provider_url.contains("https://") {
+        let buttons = if current_song.provider_url.contains("https://") {
             vec![
-                activity::Button::new(
-                    "Download companion",
-                    "https://music-assistant.io/companion-app/",
-                ),
+                activity::Button::new("Download companion", "https://music-assistant.io/companion-app/"),
                 activity::Button::new("Open in browser", &current_song.provider_url),
             ]
         } else {
-            vec![activity::Button::new(
-                "Download companion",
-                "https://music-assistant.io/companion-app/",
-            )]
+            vec![activity::Button::new("Download companion", "https://music-assistant.io/companion-app/")]
         };
 
         // Construct the final payload
-        let payload: activity::Activity<'_> = activity::Activity::new()
+        let payload = activity::Activity::new()
             .state(&current_song.artist)
             .details(&current_song.name)
             .assets(assets)
