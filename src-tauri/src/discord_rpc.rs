@@ -53,7 +53,10 @@ pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
             continue;
         }
 
-        let displayname = msg_json["data"]["display_name"].as_str().unwrap_or("").to_string();
+        let displayname = msg_json["data"]["display_name"]
+            .as_str()
+            .unwrap_or("")
+            .to_string();
         let hostname = hostname.to_str().unwrap_or("").to_string();
 
         // If it isn't the right player, ignore it
@@ -79,19 +82,45 @@ pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
         }
 
         // Get duration details
-        let already_played = (msg_json["data"]["elapsed_time"].as_f64().unwrap_or(0.0).round() as i64) * 1000;
+        let already_played = (msg_json["data"]["elapsed_time"]
+            .as_f64()
+            .unwrap_or(0.0)
+            .round() as i64)
+            * 1000;
         let duration = media_item["duration"].as_i64().unwrap_or(0) * 1000;
 
         // Create the current song struct
         let current_song = Song {
             name: media_item["name"].as_str().unwrap_or("").to_string(),
-            album: media_item["album"]["name"].as_str().unwrap_or("").to_string(),
-            album_image: metadata["images"][0]["path"].as_str().unwrap_or("").to_string(),
-            artist: media_item["artists"][0]["name"].as_str().unwrap_or("").to_string(),
-            provider_url: media_item["provider_mappings"][0]["url"].as_str().unwrap_or("").to_string(),
-            artist_image: media_item["artists"][0]["metadata"]["images"][0]["path"].as_str().unwrap_or("").to_string(),
-            started: SystemTime::now().duration_since(UNIX_EPOCH).expect("Time error").as_millis() as i64,
-            end: SystemTime::now().duration_since(UNIX_EPOCH).expect("Time error").as_millis() as i64 + (duration - already_played),
+            album: media_item["album"]["name"]
+                .as_str()
+                .unwrap_or("")
+                .to_string(),
+            album_image: metadata["images"][0]["path"]
+                .as_str()
+                .unwrap_or("")
+                .to_string(),
+            artist: media_item["artists"][0]["name"]
+                .as_str()
+                .unwrap_or("")
+                .to_string(),
+            provider_url: media_item["provider_mappings"][0]["url"]
+                .as_str()
+                .unwrap_or("")
+                .to_string(),
+            artist_image: media_item["artists"][0]["metadata"]["images"][0]["path"]
+                .as_str()
+                .unwrap_or("")
+                .to_string(),
+            started: SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .expect("Time error")
+                .as_millis() as i64,
+            end: SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .expect("Time error")
+                .as_millis() as i64
+                + (duration - already_played),
         };
 
         // The assets of the activity
@@ -109,11 +138,17 @@ pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
         // The buttons of the activity
         let buttons = if current_song.provider_url.contains("https://") {
             vec![
-                activity::Button::new("Download companion", "https://music-assistant.io/companion-app/"),
+                activity::Button::new(
+                    "Download companion",
+                    "https://music-assistant.io/companion-app/",
+                ),
                 activity::Button::new("Open in browser", &current_song.provider_url),
             ]
         } else {
-            vec![activity::Button::new("Download companion", "https://music-assistant.io/companion-app/")]
+            vec![activity::Button::new(
+                "Download companion",
+                "https://music-assistant.io/companion-app/",
+            )]
         };
 
         // Construct the final payload

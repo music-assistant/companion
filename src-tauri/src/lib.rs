@@ -2,18 +2,18 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 mod discord_rpc;
 use gethostname::gethostname;
-use tauri::menu::{MenuBuilder, MenuItemBuilder, PredefinedMenuItem};
-use tauri::tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent};
-use tauri::Manager;
-use tauri_plugin_shell::ShellExt;
 use std::sync::Once;
 use std::thread;
+use tauri::menu::{MenuBuilder, MenuItemBuilder, PredefinedMenuItem};
+use tauri::tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent};
+use tauri::{Emitter, Manager};
+use tauri_plugin_shell::ShellExt;
 use tauri_plugin_updater::UpdaterExt;
 
 #[derive(Clone, serde::Serialize)]
 struct Payload {
-  args: Vec<String>,
-  cwd: String,
+    args: Vec<String>,
+    cwd: String,
 }
 
 static DISCORD_RPC_STARTER: Once = Once::new();
@@ -34,7 +34,9 @@ fn start_rpc(websocket: String) {
 #[tauri::command]
 async fn get_output_devices(app: tauri::AppHandle) -> Vec<String> {
     // Get the output devices from squeezelite
-    let squeezelite_response: tauri_plugin_shell::process::Output = app.shell().sidecar("squeezelite")
+    let squeezelite_response: tauri_plugin_shell::process::Output = app
+        .shell()
+        .sidecar("squeezelite")
         .expect("Failed to create command")
         .args(["-l"])
         .output()
@@ -61,7 +63,8 @@ fn start_sqzlite(app: tauri::AppHandle, ip: String, output_device: String, port:
                 "Starting squeezelite with ip: {}, output device: {}, port: {}",
                 ip, output_device, port
             );
-            app.shell().sidecar("squeezelite")
+            app.shell()
+                .sidecar("squeezelite")
                 .expect("Failed to create command")
                 .args([
                     "-s",
@@ -106,7 +109,8 @@ pub fn run() {
             println!("{}, {argv:?}, {cwd}", app.package_info().name);
             let window = app.get_webview_window("main").unwrap();
             window.show().unwrap();
-            app.emit("single-instance", Payload { args: argv, cwd }).unwrap();
+            app.emit("single-instance", Payload { args: argv, cwd })
+                .unwrap();
         }))
         .setup(|app| {
             let handle = app.handle().clone();
@@ -120,7 +124,11 @@ pub fn run() {
             let show = MenuItemBuilder::with_id("show", "Show").build(app)?;
             let relaunch = MenuItemBuilder::with_id("relaunch", "Relaunch").build(app)?;
             let seperator = PredefinedMenuItem::separator(app)?;
-            let menu = MenuBuilder::new(app).items(&[&hide, &show, &seperator, &update, &relaunch, &seperator, &quit]).build()?;
+            let menu = MenuBuilder::new(app)
+                .items(&[
+                    &hide, &show, &seperator, &update, &relaunch, &seperator, &quit,
+                ])
+                .build()?;
             let _tray = TrayIconBuilder::new()
                 .menu(&menu)
                 .tooltip("Tauri")
@@ -129,38 +137,38 @@ pub fn run() {
                 .on_menu_event(move |app, event| match event.id().as_ref() {
                     "quit" => {
                         app.exit(1);
-                    },
+                    }
                     "hide" => {
                         let window = app.get_webview_window("main").unwrap();
                         window.hide().unwrap();
-                    },
+                    }
                     "show" => {
                         let window = app.get_webview_window("main").unwrap();
                         window.show().unwrap();
-                    },
+                    }
                     "relaunch" => {
                         tauri::process::restart(&app.env());
-                    },
+                    }
                     "update" => {
                         let handle = app.app_handle().clone();
                         tauri::async_runtime::spawn(async move {
                             let _response = handle.updater().unwrap().check().await;
                         });
-                    },
+                    }
                     _ => (),
                 })
                 .on_tray_icon_event(|tray, event| {
                     if let TrayIconEvent::Click {
-                      button: MouseButton::Left,
-                      button_state: MouseButtonState::Up,
-                      ..
+                        button: MouseButton::Left,
+                        button_state: MouseButtonState::Up,
+                        ..
                     } = event
                     {
-                      let app = tray.app_handle();
-                      if let Some(window) = app.get_webview_window("main") {
-                        let _ = window.show();
-                        let _ = window.set_focus();
-                      }
+                        let app = tray.app_handle();
+                        if let Some(window) = app.get_webview_window("main") {
+                            let _ = window.show();
+                            let _ = window.set_focus();
+                        }
                     }
                 })
                 .build(app)?;
