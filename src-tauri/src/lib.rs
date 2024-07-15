@@ -37,11 +37,11 @@ async fn get_output_devices(app: tauri::AppHandle) -> Vec<String> {
     let squeezelite_response: tauri_plugin_shell::process::Output = app
         .shell()
         .sidecar("squeezelite")
-        .expect("Failed to create command")
+        .expect("Failed to create command. Please check that Music Assistant companion is installed correctly")
         .args(["-l"])
         .output()
         .await
-        .expect("Failed to get output devices");
+        .expect("Failed to get output devices. Please check that Music Assistant companion is installed correctly");
     let stdout = String::from_utf8_lossy(&squeezelite_response.stdout);
     // Send the output devices to the frontend
     return stdout
@@ -65,7 +65,7 @@ fn start_sqzlite(app: tauri::AppHandle, ip: String, output_device: String, port:
             );
             app.shell()
                 .sidecar("squeezelite")
-                .expect("Failed to create command")
+                .expect("Failed to create command. Please check that Music Assistant companion is installed correctly")
                 .args([
                     "-s",
                     combined_ip.as_str(),
@@ -74,12 +74,12 @@ fn start_sqzlite(app: tauri::AppHandle, ip: String, output_device: String, port:
                     "-n",
                     hostname
                         .to_str()
-                        .expect("Couldnt convert hostname to &str -_-"),
+                        .expect("Couldnt convert hostname to &str. Please check your hostname"),
                     "-o",
                     output_device.as_str(),
                 ])
                 .spawn()
-                .expect("Failed to start squeeselite");
+                .expect("Failed to start squeeselite. Make sure the slimproto provider is enabled in the Music Assistant server");
         });
     });
 }
@@ -175,5 +175,5 @@ pub fn run() {
             Ok(())
         })
         .run(context)
-        .expect("error while running tauri application");
+        .expect("Error while running Music Assistant companion. Please check the logs and make sure you are on the latest version of the companion");
 }

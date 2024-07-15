@@ -23,24 +23,24 @@ struct Song {
 pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
     // Create the Discord RPC client
     let mut client: DiscordIpcClient =
-        DiscordIpcClient::new(CLIENT_ID).expect("Couldn't create the Discord client!");
+        DiscordIpcClient::new(CLIENT_ID).expect("Couldn't create the Discord client! Is Discord running?");
 
     // Connect to the Discord Rich Presence socket
     client
         .connect()
-        .expect("Failure while connecting to Discord RPC socket");
+        .expect("Failure while connecting to Discord RPC socket. Is Discord running?");
 
     // Connect to MASS socket
     let (mut socket, _response) = connect(Url::parse(&mass_ws).unwrap().as_str())
-        .expect("Can't connect to MASS socket.. Is it running? Is the port 8095 open?");
+        .expect("Can't connect to the Music Assistant server.. Make sure the server is running and the webserver is exposed from the settings");
 
     // Continuously update the status
     loop {
         // Read the WebSocket message
-        let msg = socket.read().expect("Error reading message");
+        let msg = socket.read().expect("Error reading message from Music Assistant server. Make sure you are on the latest version of Music Assistant server and companion app");
 
         // Parse the response to text
-        let msg_text = msg.to_text().expect("Couldn't convert response to text");
+        let msg_text = msg.to_text().expect("Couldn't convert response to text. Make sure you are on the latest version of Music Assistant server and companion app");
 
         // Parse to JSON. If it fails, skip this iteration
         let msg_json: serde_json::Value = match serde_json::from_str(msg_text) {
@@ -66,7 +66,7 @@ pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
 
         // Stop Discord RPC if not playing
         if msg_json["data"]["state"].as_str().unwrap_or("") != "playing" {
-            client.clear_activity().expect("Couldn't clear activity");
+            client.clear_activity().expect("Couldn't clear activity. Please open an issue on the Music Assistant companion repository if the Discord activity is acting weird");
             continue;
         }
 
@@ -77,7 +77,7 @@ pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
 
         // If no track is playing, clear Discord activity
         if current_item.is_null() {
-            client.clear_activity().expect("Couldn't clear activity");
+            client.clear_activity().expect("Couldn't clear activity. Please open an issue on the Music Assistant companion repository if the Discord activity is acting weird");
             continue;
         }
 
@@ -162,6 +162,6 @@ pub fn start_rpc(mass_ws: String, hostname: std::ffi::OsString) {
         // Set the activity
         client
             .set_activity(payload)
-            .expect("Failure updating status");
+            .expect("Failure updating status. Please open an issue on the Music Assistant companion repository if the Discord activity is acting weird");
     }
 }
