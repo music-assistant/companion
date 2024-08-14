@@ -48,7 +48,7 @@ async fn get_output_devices(app: tauri::AppHandle) -> Vec<String> {
     return stdout
         .lines()
         .filter(|line: &&str| !line.trim().is_empty() && !line.starts_with("Output devices:"))
-        .map(|line: &str| line.split_whitespace().next().unwrap().to_owned())
+        .map(|line| line.to_string())
         .collect();
 }
 
