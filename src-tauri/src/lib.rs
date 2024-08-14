@@ -26,6 +26,7 @@ fn start_rpc(websocket: String) {
         // Start the discord rich presence manager in a new thread
         thread::spawn(move || {
             let hostname: std::ffi::OsString = gethostname();
+            println!("Starting Discord RPC with websocket: {} on host: {}", websocket, hostname.to_string_lossy());
             discord_rpc::start_rpc(websocket, hostname);
         });
     });
