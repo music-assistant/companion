@@ -26,10 +26,10 @@
     <br />
     <br />
     <b>Download for </b>
-    macOS (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/Music.Assistant.Companion_0.0.45_aarch64.dmg">Apple Silicon</a> |
-    <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/Music.Assistant.Companion_0.0.45_x64.dmg">Intel</a>) ·
-		<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/Music.Assistant.Companion_0.0.45_x64_en-US.msi">Windows</a> ·
-    Linux (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/music-assistant-companion_0.0.45_amd64.deb">Debian</a> | <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.45/music-assistant-companion_0.0.45_amd64.AppImage">Other</a>)
+    macOS (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.70/Music.Assistant.Companion_0.0.45_aarch64.dmg">Apple Silicon</a> |
+    <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.70/Music.Assistant.Companion_0.0.45_x64.dmg">Intel</a>) ·
+		<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.70/Music.Assistant.Companion_0.0.45_x64_en-US.msi">Windows</a> ·
+    Linux (<a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.70/music-assistant-companion_0.0.45_amd64.deb">Debian</a> | <a href="https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.70/music-assistant-companion_0.0.45_amd64.AppImage">Other</a>)
     <br />
   </p>
 </p>
@@ -37,8 +37,8 @@
 > [!IMPORTANT]
 > This is still in very early alpha. Bugs _will_ be present. Please help finding them, you can report any bugs on the [Discord server](https://discord.gg/kaVm8hGpne) or in the [repo issues](https://github.com/music-assistant/music-assistant-desktop/issues)
 
-> [!INFO]
-> LOOKING FOR MAINTAINERS. The companion app is current very sparsly maintained. Any help is appreciated. Check out the MAINTAINERS.md file if you want to help.
+> [!WARNING]
+> LOOKING FOR MAINTAINERS. The companion app is current very sparsly maintained. Any help is appreciated. Check out the CONTRIBUTING.md file if you want to help.
 
 ## Setup
 
