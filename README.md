@@ -37,6 +37,9 @@
 > [!IMPORTANT]
 > This is still in very early alpha. Bugs _will_ be present. Please help finding them, you can report any bugs on the [Discord server](https://discord.gg/kaVm8hGpne) or in the [repo issues](https://github.com/music-assistant/music-assistant-desktop/issues)
 
+> [!INFO]
+> LOOKING FOR MAINTAINERS. The companion app is current very sparsly maintained. Any help is appreciated. Check out the MAINTAINERS.md file if you want to help.
+
 ## Setup
 
 When starting the app for the first time you are asked about some information about the Music Assistant Server.
