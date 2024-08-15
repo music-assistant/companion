@@ -99,9 +99,9 @@ The macOS builds are signed and notarized using our Apple developer account. The
 
 For more detailed explanations, refer to [this link](https://tauri.app/v1/guides/distribution/sign-macos). 
 
-### Tauri 2.0 Beta
+### Tauri 2.0 Release candidate
 
-The project is currently using Tauri 2.0 beta. It should be switched to stable once it is released.
+The project is currently using Tauri 2.0 releace candidate. It should be switched to stable once it is released.
 
 ### Mobile Builds
 
