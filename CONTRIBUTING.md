@@ -126,7 +126,7 @@ Before you begin, please ensure that you have the following installed:
 To contribute to the Music Assistant Companion, follow these steps:
 
 1. Fork the repository on GitHub.
-2. Clone your forked repository to your local machine.
+2. Clone your forked repository to your local machine including the frontend submodule. `git clone --recurse-submodules [github link]`
 3. Install the project dependencies by running `yarn install`.
 4. Start the development server by running `yarn tauri dev`.
 
