@@ -10,24 +10,24 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [build-dependencies]
-tauri-build = { version = "2.0.0-rc.2", features = [] }
+tauri-build = { version = "2.0.0-rc.12", features = [] }
 
 [dependencies]
-tauri = { version = "2.0.0-rc.2", features = [ "devtools", "tray-icon"] }
-tauri-plugin-single-instance = "2.0.0-rc.0"
-tauri-plugin-window-state = "2.0.0-rc.0"
+tauri = { version = "2.0.0-rc.15", features = [ "devtools", "tray-icon"] }
+tauri-plugin-single-instance = "2.0.0-rc.4"
+tauri-plugin-window-state = "2.0.0-rc.5"
 discord-rich-presence = "0.2.4"
-tungstenite = {version = "0.23.0", features = ["native-tls"] }
+tungstenite = {version = "0.24.0", features = ["native-tls"] }
 url = "2.5.2"
-serde = { version = "1.0.207", features = ["derive"] }
-serde_json = "1.0.124"
+serde = { version = "1.0.210", features = ["derive"] }
+serde_json = "1.0.128"
 gethostname = "0.5.0"
-tauri-plugin-shell = "2.0.0-rc.0"
-tauri-plugin-process = "2.0.0-rc.0"
+tauri-plugin-shell = "2.0.0-rc.3"
+tauri-plugin-process = "2.0.0-rc.1"
 time = "0.3.36"
 
 [target."cfg(not(any(target_os = \"android\", target_os = \"ios\")))".dependencies]
-tauri-plugin-updater = "2.0.0-rc.0"
+tauri-plugin-updater = "2.0.0-rc.3"
 
 [dependencies.openssl]
 version = "=0.10.66"
