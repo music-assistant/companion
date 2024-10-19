@@ -2,11 +2,13 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 mod discord_rpc;
 use gethostname::gethostname;
-use std::sync::Once;
+use std::sync::{Arc, Mutex, Once};
 use std::thread;
+
 use tauri::menu::{MenuBuilder, MenuItemBuilder, PredefinedMenuItem};
 use tauri::tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent};
 use tauri::{Emitter, Manager};
+use tauri_plugin_shell::process::CommandChild;
 use tauri_plugin_shell::ShellExt;
 use tauri_plugin_updater::UpdaterExt;
 
@@ -14,6 +16,20 @@ use tauri_plugin_updater::UpdaterExt;
 struct Payload {
     args: Vec<String>,
     cwd: String,
+}
+
+struct SqueezeliteState {
+    process: Option<CommandChild>,
+}
+
+impl SqueezeliteState {
+    fn kill(&mut self) {
+        if let Some(process) = self.process.take() {
+            process
+                .kill()
+                .expect("failed to kill the squeezelite process");
+        }
+    }
 }
 
 static DISCORD_RPC_STARTER: Once = Once::new();
@@ -53,8 +69,15 @@ async fn get_output_devices(app: tauri::AppHandle) -> Vec<String> {
 }
 
 #[tauri::command]
-fn start_sqzlite(app: tauri::AppHandle, ip: String, output_device: String, port: String) {
+fn start_sqzlite(
+    app: tauri::AppHandle,
+    ip: String,
+    output_device: String,
+    port: String,
+    state: tauri::State<Arc<Mutex<SqueezeliteState>>>,
+) {
     // To prevent it from starting multiple times even if frontend gets reloaded
+    let squeezelite_state: Arc<Mutex<SqueezeliteState>> = Arc::clone(&state);
     SQUEEZELITE_STARTER.call_once(|| {
         // Start squeezelite in a new thread
         thread::spawn(move || {
@@ -64,7 +87,7 @@ fn start_sqzlite(app: tauri::AppHandle, ip: String, output_device: String, port:
                 "Starting squeezelite with ip: {}, output device: {}, port: {}",
                 ip, output_device, port
             );
-            app.shell()
+            let (_, process) = app.shell()
                 .sidecar("squeezelite")
                 .expect("Failed to create command. Please check that Music Assistant companion is installed correctly")
                 .args([
@@ -81,7 +104,9 @@ fn start_sqzlite(app: tauri::AppHandle, ip: String, output_device: String, port:
                 ])
                 .spawn()
                 .expect("Failed to start squeeselite. Make sure the slimproto provider is enabled in the Music Assistant server");
-        });
+            let mut sqzlite_state = squeezelite_state.lock().expect("failed to acquire squeezelite handle lock");
+            sqzlite_state.process = Some(process);
+            });
     });
 }
 
@@ -89,9 +114,12 @@ fn start_sqzlite(app: tauri::AppHandle, ip: String, output_device: String, port:
 pub fn run() {
     // Create the tauri context, builder and handler
     let context = tauri::generate_context!();
+    let squeezelite_state = Arc::new(Mutex::new(SqueezeliteState { process: None }));
+    let state_for_app = Arc::clone(&squeezelite_state);
     let _builder = tauri::Builder::default()
         .plugin(tauri_plugin_process::init())
         .plugin(tauri_plugin_shell::init())
+        .manage(squeezelite_state.clone())
         .on_window_event(|window, event| match event {
             tauri::WindowEvent::CloseRequested { api, .. } => {
                 window.hide().unwrap();
@@ -113,7 +141,7 @@ pub fn run() {
             app.emit("single-instance", Payload { args: argv, cwd })
                 .unwrap();
         }))
-        .setup(|app| {
+        .setup(move |app| {
             let handle = app.handle().clone();
             tauri::async_runtime::spawn(async move {
                 let _response = handle.updater().unwrap().check().await;
@@ -130,13 +158,18 @@ pub fn run() {
                     &hide, &show, &seperator, &update, &relaunch, &seperator, &quit,
                 ])
                 .build()?;
+            let cloned_state = Arc::clone(&state_for_app);
             let _tray = TrayIconBuilder::new()
                 .menu(&menu)
                 .tooltip("Music Assistant Companion")
                 .icon(app.default_window_icon().unwrap().clone())
                 .menu_on_left_click(false)
-                .on_menu_event(move |app, event| match event.id().as_ref() {
+                .on_menu_event(move |app, event| {
+                    let cloned_state = Arc::clone(&cloned_state);
+                    match event.id().as_ref() {
                     "quit" => {
+                        let mut squeezelite_handle = cloned_state.lock().expect("failed to acquire squeezelite handle lock");
+                        squeezelite_handle.kill();
                         app.exit(1);
                     }
                     "hide" => {
@@ -157,7 +190,7 @@ pub fn run() {
                         });
                     }
                     _ => (),
-                })
+                }})
                 .on_tray_icon_event(|tray, event| {
                     if let TrayIconEvent::Click {
                         button: MouseButton::Left,
