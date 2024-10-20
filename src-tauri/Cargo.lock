@@ -2085,7 +2085,7 @@ dependencies = [
 
 [[package]]
 name = "music-assistant-companion"
-version = "0.0.73"
+version = "0.0.74"
 dependencies = [
  "discord-rich-presence",
  "gethostname",
