@@ -10,30 +10,30 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [build-dependencies]
-tauri-build = { version = "2.0.0-rc.12", features = [] }
+tauri-build = { version = "2.0.1", features = [] }
 
 [dependencies]
-tauri = { version = "2.0.0-rc.15", features = [ "devtools", "tray-icon"] }
-tauri-plugin-single-instance = "2.0.0-rc.4"
-tauri-plugin-window-state = "2.0.0-rc.5"
-discord-rich-presence = "0.2.4"
+tauri = { version = "2.0.5", features = [ "devtools", "tray-icon"] }
+tauri-plugin-single-instance = "2.0.1"
+tauri-plugin-window-state = "2.0.1"
+discord-rich-presence = "0.2.5"
 tungstenite = {version = "0.24.0", features = ["native-tls"] }
 url = "2.5.2"
 serde = { version = "1.0.210", features = ["derive"] }
-serde_json = "1.0.128"
+serde_json = "1.0.132"
 gethostname = "0.5.0"
-tauri-plugin-shell = "2.0.0-rc.3"
-tauri-plugin-process = "2.0.0-rc.1"
+tauri-plugin-shell = "2.0.2"
+tauri-plugin-process = "2.0.1"
 time = "0.3.36"
 
 [target."cfg(not(any(target_os = \"android\", target_os = \"ios\")))".dependencies]
-tauri-plugin-updater = "2.0.0-rc.3"
+tauri-plugin-updater = "2.0.2"
 
 [dependencies.openssl]
-version = "=0.10.66"
+version = "=0.10.68"
 features = ["vendored"]
 [dependencies.openssl-sys]
-version = "=0.9.103"
+version = "=0.9.104"
 features = ["vendored"]
 
 [features]
