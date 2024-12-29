@@ -87,21 +87,24 @@ fn start_sqzlite(
                 "Starting squeezelite with ip: {}, output device: {}, port: {}",
                 ip, output_device, port
             );
+            let mut args = vec![
+                "-s",
+                combined_ip.as_str(),
+                "-M",
+                "Companion",
+                "-n",
+                hostname
+                    .to_str()
+                    .expect("Couldnt convert hostname to &str. Please check your hostname"),
+            ];
+            if output_device != "default" || !output_device.is_empty() {
+                args.push("-o");
+                args.push(output_device.as_str());
+            }
             let (_, process) = app.shell()
                 .sidecar("squeezelite")
                 .expect("Failed to create command. Please check that Music Assistant companion is installed correctly")
-                .args([
-                    "-s",
-                    combined_ip.as_str(),
-                    "-M",
-                    "Companion",
-                    "-n",
-                    hostname
-                        .to_str()
-                        .expect("Couldnt convert hostname to &str. Please check your hostname"),
-                    "-o",
-                    output_device.as_str(),
-                ])
+                .args(args)
                 .spawn()
                 .expect("Failed to start squeeselite. Make sure the slimproto provider is enabled in the Music Assistant server");
             let mut sqzlite_state = squeezelite_state.lock().expect("failed to acquire squeezelite handle lock");
