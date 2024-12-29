@@ -72,7 +72,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-latest, ubuntu-22.04, windows-latest, macos-12]
+        platform: [macos-latest, ubuntu-22.04, windows-latest, macos-15]
 
     runs-on: ${{ matrix.platform }}
 
@@ -191,7 +191,7 @@ jobs:
 #          xcrun altool --upload-app -f file -t platform -u username [-p password]
 
       - name: Build the app (Mac)
-        if: matrix.platform == 'macos-12'
+        if: matrix.platform == 'macos-15'
         uses: tauri-apps/tauri-action@v0
   
         env:
