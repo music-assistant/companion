@@ -90,7 +90,7 @@ jobs:
         if: matrix.platform == 'ubuntu-22.04'
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential curl wget file libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev libsoup2.4-dev libxcb-xfixes0-dev libxcb-shape0-dev patchelf
+          sudo apt-get install -y libxdo-dev libxcb-xfixes0-dev libxcb-shape0-dev patchelf
           sudo apt install -y \
             build-essential \
             curl \
@@ -108,7 +108,6 @@ jobs:
             libjavascriptcoregtk-4.0-dev=2.36.0-2ubuntu1 \
             gir1.2-javascriptcoregtk-4.0=2.36.0-2ubuntu1 \
             gir1.2-webkit2-4.0=2.36.0-2ubuntu1;
-          echo "PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig" >> $GITHUB_ENV
       - name: Install Rust (Stable)
         run:
           curl https://sh.rustup.rs -sSf | sh -s -- -y
