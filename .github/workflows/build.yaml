@@ -11,7 +11,7 @@ on:
           - minor
           - major
       update_frontend:
-        description: 'Try to pull latest changes from frontend repository (companion branch)'
+        description: 'Try to pull the latest changes from the frontend repository (companion branch)'
         required: false
         type: boolean
         default: true
@@ -72,7 +72,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-latest, ubuntu-22.04, windows-latest, macos-12]
+        platform: [macos-latest, ubuntu-24.04, windows-latest, macos-15]
 
     runs-on: ${{ matrix.platform }}
 
@@ -86,12 +86,33 @@ jobs:
         run: |
           git pull
 
-      - name: Install dependencies (Linux)
-        if: matrix.platform == 'ubuntu-22.04'
+      - name: Install linux dependencies
+        shell: bash
+        if: runner.os == 'Linux'
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev libsoup2.4-dev libjavascriptcoregtk-4.1-dev libxcb-xfixes0-dev libxcb-shape0-dev patchelf
+          sudo apt update;
+          sudo apt install -y \
+            build-essential \
+            curl \
+            wget \
+            file \
+            libssl-dev \
+            libgtk-3-dev \
+            libappindicator3-dev \
+            libxcb-xfixes0-dev \
+            libxcb-shape0-dev \
+            patchelf \
+            libxdo-dev \
+            librsvg2-dev;
 
+          sudo apt install -y \
+            libwebkit2gtk-4.1-0=2.44.0-2 \
+            libwebkit2gtk-4.1-dev=2.44.0-2 \
+            libjavascriptcoregtk-4.1-0=2.44.0-2 \
+            libjavascriptcoregtk-4.1-dev=2.44.0-2 \
+            gir1.2-javascriptcoregtk-4.1=2.44.0-2 \
+            gir1.2-webkit2-4.1=2.44.0-2;
+      
       - name: Install Rust (Stable)
         run:
           curl https://sh.rustup.rs -sSf | sh -s -- -y
@@ -123,7 +144,7 @@ jobs:
         run: yarn install && cd $env:GITHUB_WORKSPACE/frontend/ && yarn install && cd $env:GITHUB_WORKSPACE # Change this to npm, yarn or pnpm.
 
       - name: Build the app (Linux)
-        if: matrix.platform == 'ubuntu-22.04'
+        if: runner.os == 'Linux'
         uses: tauri-apps/tauri-action@v0
 
         env:
@@ -191,7 +212,7 @@ jobs:
 #          xcrun altool --upload-app -f file -t platform -u username [-p password]
 
       - name: Build the app (Mac)
-        if: matrix.platform == 'macos-12'
+        if: matrix.platform == 'macos-15'
         uses: tauri-apps/tauri-action@v0
   
         env:
@@ -210,7 +231,7 @@ jobs:
           releaseBody: "Fixes"
 
       - name: Upload linux binary
-        if: matrix.platform == 'ubuntu-22.04'
+        if: runner.os == 'Linux'
         uses: svenstaro/upload-release-action@v2
         with:
           tag: v${{ needs.update_version.outputs.version }}
@@ -218,7 +239,7 @@ jobs:
           file: src-tauri/target/release/music-assistant-companion
 
       - name: Upload squeezelite binary
-        if: matrix.platform == 'ubuntu-22.04'
+        if: runner.os == 'Linux'
         uses: svenstaro/upload-release-action@v2
         with:
           tag: v${{ needs.update_version.outputs.version }}
