@@ -18,7 +18,9 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
-    "externalBin": ["bin/squeezelite"],
+    "externalBin": [
+      "bin/squeezelite"
+    ],
     "linux": {
       "appimage": {
         "bundleMediaFramework": true
@@ -26,7 +28,7 @@
     }
   },
   "productName": "Music Assistant Companion",
-  "version": "0.0.83",
+  "version": "0.0.84",
   "identifier": "io.music-assistant.companion",
   "plugins": {
     "updater": {
