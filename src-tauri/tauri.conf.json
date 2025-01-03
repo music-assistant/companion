@@ -18,9 +18,10 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
-    "externalBin": [
-      "bin/squeezelite"
-    ]
+    "externalBin": ["bin/squeezelite"],
+    "appimage": {
+      "bundleMediaFramework": true
+    }
   },
   "productName": "Music Assistant Companion",
   "version": "0.0.75",
