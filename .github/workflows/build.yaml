@@ -72,7 +72,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-latest, ubuntu-22.04, windows-latest, macos-15]
+        platform: [macos-latest, ubuntu-24.04, windows-latest, macos-15]
 
     runs-on: ${{ matrix.platform }}
 
@@ -140,7 +140,7 @@ jobs:
         run: yarn install && cd $env:GITHUB_WORKSPACE/frontend/ && yarn install && cd $env:GITHUB_WORKSPACE # Change this to npm, yarn or pnpm.
 
       - name: Build the app (Linux)
-        if: matrix.platform == 'ubuntu-22.04'
+        if: runner.os == 'Linux'
         uses: tauri-apps/tauri-action@v0
 
         env:
@@ -227,7 +227,7 @@ jobs:
           releaseBody: "Fixes"
 
       - name: Upload linux binary
-        if: matrix.platform == 'ubuntu-22.04'
+        if: runner.os == 'Linux'
         uses: svenstaro/upload-release-action@v2
         with:
           tag: v${{ needs.update_version.outputs.version }}
@@ -235,7 +235,7 @@ jobs:
           file: src-tauri/target/release/music-assistant-companion
 
       - name: Upload squeezelite binary
-        if: matrix.platform == 'ubuntu-22.04'
+        if: runner.os == 'Linux'
         uses: svenstaro/upload-release-action@v2
         with:
           tag: v${{ needs.update_version.outputs.version }}
